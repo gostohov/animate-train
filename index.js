@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     graphTrajectories = buildGraph(trajectories);  
     
     document.querySelectorAll("[data-type='city']").forEach(el => {
-        el.addEventListener("click", () => moveTo(el));
+        el.addEventListener("click", () => {
+            openPopup(el);
+            moveTo(el);
+        });
     });
 });
 
@@ -81,9 +84,9 @@ const moveTo = (destinationCityEl) => {
 
                 // Меняем изображение поезда в зависимости от направления движения
                 if (isMovingBackward) {
-                    train.setAttribute('href', 'assets/train_reverse.svg');
+                    train.setAttribute('href', 'assets/img/train_reverse.svg');
                 } else {
-                    train.setAttribute('href', 'assets/train.svg');
+                    train.setAttribute('href', 'assets/img/train.svg');
                 }
 
                 // Центрируем вьюпорт на поезде
@@ -102,16 +105,15 @@ const moveTo = (destinationCityEl) => {
 
 const markCityAsPristine = (cityElement) => {
     const currentHref = cityElement.getAttribute('href');
-    const newHref = currentHref.replace(/(assets\/)([^\/]+)_красный(\.svg)/, '$1$2$3');
+    const newHref = currentHref.replace(/(assets\/img\/)([^\/]+)_красный(\.svg)/, '$1$2$3');
     cityElement.setAttribute('href', newHref);
 };
 
 const markCityAsTouched = (cityElement) => {
     const currentHref = cityElement.getAttribute('href');
-    const newHref = currentHref.replace(/(assets\/)([^\/]+)(\.svg)/, '$1$2_красный$3');
+    const newHref = currentHref.replace(/(assets\/img\/)([^\/]+)(\.svg)/, '$1$2_красный$3');
     cityElement.setAttribute('href', newHref);
 };
-
 
 const findPath = (graph, start, end, path = [], visited = new Set()) => {
     if (start === end) {
@@ -156,13 +158,87 @@ const buildGraph = (trajectories) => {
 
 const centerScrollOnTrain = () => {
     const train = document.getElementById('train');
-    const trainBBox = train.getBoundingClientRect();
-    const scrollX = trainBBox.left + window.scrollX - (window.innerWidth / 2 - trainBBox.width / 2);
-    const scrollY = trainBBox.top + window.scrollY - (window.innerHeight / 2 - trainBBox.height / 2);
-
-    window.scrollTo({
-        top: scrollY,
-        left: scrollX,
-        behavior: 'smooth'
-    });
+    train.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
 };
+
+const openPopup = (cityElement) => {
+    const containerEl = document.querySelector(".container");
+
+    // Если попап уже открыт, не создаем новый
+    if (document.querySelector(".popup-container")) {
+        return;
+    }
+
+    // Создаем элемент попапа
+    const popupEl = document.createElement('div');
+    popupEl.classList.add('popup-container');
+
+    // Наполняем попап содержимым
+    popupEl.innerHTML = `
+        <div class="popup-content">
+            <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+            <div class="popup-header">
+                <h1>${cityElement.dataset.cityname}</h1>
+            </div>
+            <div class="popup-body">
+                <figure>
+                    <img src="${cityElement.dataset.imagepath}" alt="Изображение города">
+                    <figcaption><i>Источник:</i> ${cityElement.dataset.caption}</figcaption>
+                </figure>
+                <p>${cityElement.dataset.description}</p>
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button class="btn-prev">Предыдущая станция</button>
+            <button class="btn-next">Следующая станция</button>
+        </div>
+    `;
+
+    // Добавляем к контейнеру стили
+    containerEl.classList.add('popup-opened');
+    // Добавляем попап в контейнер
+    containerEl.appendChild(popupEl);
+
+    // Добавляем callback на кнопку закрытия попапа
+    document.querySelector(".btn-close").addEventListener("click", () => closePopup());
+
+    const btnPrevEl = document.querySelector(".btn-prev");
+    const prevCityId = cityElement.dataset.prevcity;
+    if (prevCityId !== undefined) {
+        btnPrevEl.classList.remove('disabled');
+        btnPrevEl.addEventListener("click", () => {
+            closePopup();
+            const prevCityEl = document.getElementById(prevCityId);
+            openPopup(prevCityEl);
+            moveTo(prevCityEl);
+        });
+    } else {
+        btnPrevEl.classList.add('disabled');
+    }
+
+    const btnNextEl = document.querySelector(".btn-next");
+    const nextCityId = cityElement.dataset.nextcity;
+    if (nextCityId !== undefined) {
+        btnNextEl.classList.remove('disabled');
+        btnNextEl.addEventListener("click", () => {
+            closePopup();
+            const nextCityEl = document.getElementById(nextCityId);
+            openPopup(nextCityEl);
+            moveTo(nextCityEl);
+        });
+    } else {
+        btnNextEl.classList.add('disabled');
+    }
+}
+
+const closePopup = () => {
+    // Находим элемент попапа
+    const popupEl = document.querySelector(".popup-container");
+
+    // Если попап найден, удаляем его
+    if (popupEl) {
+        popupEl.remove();
+        const containerEl = document.querySelector(".container");
+        containerEl.classList.remove('popup-opened');
+    }
+}
