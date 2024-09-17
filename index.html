@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>РЖД</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+</head>
+<body>
+    <div class="map">
+        <svg width="1920" height="953" viewBox="0 0 1920 953" xmlns="http://www.w3.org/2000/svg">
+            <image xlink:href="assets/background.jpg"/>
+
+            <!-- х-60 у19 -->
+            <g data-type="city" cursor="pointer" id="0">
+                <circle cx="237" cy="493" r="20" fill="white" />
+                <circle cx="237" cy="493" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/тайшет.svg" x="177" y="512"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="6">
+                <circle cx="604" cy="576" r="20" fill="white" />
+                <circle cx="604" cy="576" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/северобайкальск.svg" x="461" y="595"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="7">
+                <circle cx="686" cy="525" r="20" fill="white" />
+                <circle cx="686" cy="525" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/кунерма.svg" x="576" y="418"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="8">
+                <circle cx="747" cy="493" r="20" fill="white" />
+                <circle cx="747" cy="493" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/курлы.svg" x="729" y="511"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="9">
+                <circle cx="813" cy="381" r="20" fill="white" />
+                <circle cx="813" cy="381" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/уоян.svg" x="663" y="296"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="10">
+                <circle cx="886" cy="422" r="20" fill="white" />
+                <circle cx="886" cy="422" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/северомуйск.svg" x="816" y="232"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="11">
+                <circle cx="1013" cy="436" r="20" fill="white" />
+                <circle cx="1013" cy="436" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/бальбуха.svg" x="919" y="332"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="12">
+                <circle cx="1108" cy="530" r="20" fill="white" />
+                <circle cx="1108" cy="530" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/тында.svg" x="1087" y="550"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="13">
+                <circle cx="1179" cy="453" r="20" fill="white" />
+                <circle cx="1179" cy="453" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/нерюнгри.svg" x="1198" y="428"></image>
+            </g>
+            <g data-type="city" cursor="pointer" id="14">
+                <circle cx="1366" cy="602" r="20" fill="white" />
+                <circle cx="1366" cy="602" r="12.6316" fill="#D9D9D9" />
+                <image href="assets/ульма.svg" x="1287" y="497"></image>
+            </g>
+
+            <path style="pointer-events: none;" data-type="trajectory" data-start="0" data-end="4" id="0-4" d="M238 494.5L261.5 490L279 486L295 483.5L310 482.5H328.5L342.5 483.5L354 485L381 488" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="4" data-end="6" id="4-6" d="M381 488L412.5 499.5L430 508.5L443 516.5L458.5 525.5L473 535L489 544L502 549.5L520 554L546 561.5L564 566L604 576" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="6" data-end="7" id="6-7" d="M604 576L622.5 568.5L642.5 553.5L658.5 542L670 534L686 524.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="7" data-end="8" id="7-8" d="M686 524.5L699.5 517L712.5 510.5L723 505L747 493" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="8" data-end="9" id="8-9" d="M747 493L753 479.5L761 466.5L776.5 440.5L792.5 415L812.5 381.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="9" data-end="10" id="9-10" d="M812.5 381.5L838.5 397L854.5 405.5L886 421.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="10" data-end="11" id="10-11" d="M886 421.5L909 426.5L931.5 432L953 435L969.5 435.5H987.5H1013" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="11" data-end="12" id="11-12" d="M1013 435.5L1032.5 447L1041 453.5L1049.5 461L1059 469.5L1067 478.5L1074 487L1082 496.5L1090.5 507L1108 530" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="13" id="12-13" d="M1108 530L1128 508L1151.5 484L1171.5 464L1179 452.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="14" id="12-14" d="M1108 530L1128 533.5H1150L1157.5 534.5L1165.5 536L1173.5 537.5L1182.5 540L1190 543L1199 546L1207.5 549.5L1214.5 552L1222.5 555L1231 559L1273.5 579L1291 585L1309 590.5L1331.5 596L1366 602" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="1" data-end="2" id="1-2" d="M103.5 518L108 536L116.5 554L125 572L133 589.5L154 636.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="2" data-end="3" id="2-3" d="M154 636.5L168 647L176 651L183 654.5L191 659L198 664L203.5 668.5L210.5 674.5L217 679L224 685.5L230 692.5L241 704L253 717L264.5 730L276 744L282.5 750.5L287.5 755.5L294 761.5L362 813" fill="transparent"/>
+
+            <path style="pointer-events: none;" data-type="trajectory" data-start="4" data-end="0" id="4-0" d="M238 494.5L261.5 490L279 486L295 483.5L310 482.5H328.5L342.5 483.5L354 485L381 488" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="6" data-end="4" id="6-4" d="M381 488L412.5 499.5L430 508.5L443 516.5L458.5 525.5L473 535L489 544L502 549.5L520 554L546 561.5L564 566L604 576" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="7" data-end="6" id="7-6" d="M604 576L622.5 568.5L642.5 553.5L658.5 542L670 534L686 524.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="8" data-end="7" id="8-7" d="M686 524.5L699.5 517L712.5 510.5L723 505L747 493" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="9" data-end="8" id="9-8" d="M747 493L753 479.5L761 466.5L776.5 440.5L792.5 415L812.5 381.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="10" data-end="9" id="10-9" d="M812.5 381.5L838.5 397L854.5 405.5L886 421.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="11" data-end="10" id="11-10" d="M886 421.5L909 426.5L931.5 432L953 435L969.5 435.5H987.5H1013" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="11" id="12-11" d="M1013 435.5L1032.5 447L1041 453.5L1049.5 461L1059 469.5L1067 478.5L1074 487L1082 496.5L1090.5 507L1108 530" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="13" data-end="12" id="13-12" d="M1108 530L1128 508L1151.5 484L1171.5 464L1179 452.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="14" data-end="12" id="14-12" d="M1108 530L1128 533.5H1150L1157.5 534.5L1165.5 536L1173.5 537.5L1182.5 540L1190 543L1199 546L1207.5 549.5L1214.5 552L1222.5 555L1231 559L1273.5 579L1291 585L1309 590.5L1331.5 596L1366 602" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="2" data-end="1" id="2-1" d="M103.5 518L108 536L116.5 554L125 572L133 589.5L154 636.5" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="3" data-end="2" id="3-2" d="M154 636.5L168 647L176 651L183 654.5L191 659L198 664L203.5 668.5L210.5 674.5L217 679L224 685.5L230 692.5L241 704L253 717L264.5 730L276 744L282.5 750.5L287.5 755.5L294 761.5L362 813" fill="transparent"/>
+            <path style="pointer-events: none;" data-type="trajectory" data-start="5" data-end="4" id="5-4" d="M381 488L374.5 465.5L368 450L365 442L362 434L359 425.5L353 408.5" fill="transparent"/>
+
+            <image style="pointer-events: none;" id="train" href="assets/train.svg" x="152" y="477" width="170" data-current-position="0"></image>
+        </svg>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
