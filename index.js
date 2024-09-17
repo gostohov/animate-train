@@ -49,7 +49,7 @@ const moveTo = (element) => {
         }
     });
 
-    pathIds.forEach((pathId, index) => {
+    pathIds.forEach((pathId) => {
         const endPoints = pathId.split("-");
         const start = parseInt(endPoints[0]);
         const end = parseInt(endPoints[1]);
