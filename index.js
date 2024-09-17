@@ -18,23 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const moveTo = (element) => {
+const moveTo = (destinationCityEl) => {
     if (isAnimating) {
         // Если анимация уже идёт, игнорируем новое действие
         return;
     }
 
-    const destination = element.id;
+    const destinationCityId = destinationCityEl.id;
 
     // Получаем элемент поезда
     const train = document.getElementById('train');
-    const currentPosition = parseInt(train.getAttribute('data-current-position'));
+    const startCityId = parseInt(train.getAttribute('data-current-position'));
 
-    if (destination === currentPosition) {
+    if (destinationCityId === startCityId) {
         return;
     }
 
-    const pathIds = findPath(graphTrajectories, currentPosition, destination);
+    const pathIds = findPath(graphTrajectories, startCityId, destinationCityId);
     if (!pathIds?.length) {
         return;
     }
@@ -44,8 +44,15 @@ const moveTo = (element) => {
 
     // Создаем GSAP timeline для последовательной анимации движения поезда по каждому пути
     const timeline = gsap.timeline({
+        onStart: () => {
+            // заменяем иконки городов
+            const startCityEl = document.getElementById(startCityId);
+            markCityAsPristine(startCityEl);
+            markCityAsTouched(destinationCityEl);
+        },
         onComplete: () => {
-            isAnimating = false; // Сбрасываем флаг после завершения всей анимации
+            // Сбрасываем флаг после завершения всей анимации
+            isAnimating = false; 
         }
     });
 
@@ -66,9 +73,7 @@ const moveTo = (element) => {
                 alignOrigin: [0.5, 0.5],
                 autoRotate: true,    // Автоматический поворот по направлению движения
                 start: isMovingBackward ? 1 : 0, // Параметры для обратного движения
-                end: isMovingBackward ? 0 : 1,
-                curviness: 2,
-                type: "cubic"
+                end: isMovingBackward ? 0 : 1
             },
             onStart: () => {
                 // Обновляем позицию поезда в начале каждой анимации
@@ -93,6 +98,18 @@ const moveTo = (element) => {
 
     // Запускаем анимацию
     timeline.play();
+};
+
+const markCityAsPristine = (cityElement) => {
+    const currentHref = cityElement.getAttribute('href');
+    const newHref = currentHref.replace(/(assets\/)([^\/]+)_красный(\.svg)/, '$1$2$3');
+    cityElement.setAttribute('href', newHref);
+};
+
+const markCityAsTouched = (cityElement) => {
+    const currentHref = cityElement.getAttribute('href');
+    const newHref = currentHref.replace(/(assets\/)([^\/]+)(\.svg)/, '$1$2_красный$3');
+    cityElement.setAttribute('href', newHref);
 };
 
 
