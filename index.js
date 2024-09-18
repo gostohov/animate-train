@@ -221,7 +221,7 @@ const openPopup = (cityElement) => {
             <div class="popup-body">
                 <figure>
                     <img src="${cityElement.dataset.imagepath}" alt="Изображение города">
-                    <figcaption><i>Источник:</i> ${cityElement.dataset.caption}</figcaption>
+                    <figcaption> ${cityElement.dataset.caption}</figcaption>
                 </figure>
                 <p>${cityElement.dataset.description}</p>
             </div>
