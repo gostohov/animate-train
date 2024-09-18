@@ -220,8 +220,10 @@ const openPopup = (cityElement) => {
             </div>
             <div class="popup-body">
                 <figure>
-                    <img src="${cityElement.dataset.imagepath}" alt="Изображение города">
-                    <figcaption> ${cityElement.dataset.caption}</figcaption>
+                    <img src="${cityElement.dataset.imagepath1}" alt="Изображение города">
+                    <figcaption>${cityElement.dataset.caption1}</figcaption></br>
+                    <img src="${cityElement.dataset.imagepath2}" alt="Изображение города" onerror="this.style.display='none';">
+                    <figcaption>${cityElement.dataset.caption2}</figcaption>
                 </figure>
                 <p>${cityElement.dataset.description}</p>
             </div>
