@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isAnimating) {
                 return;
             }
+
+            openPopup(el);
+
             const cityId = el.id;
             const train = document.getElementById('train');
             const startCityId = parseInt(train.getAttribute('data-current-position'));
@@ -30,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            openPopup(el);
             moveTo(el);
         });
     });
@@ -341,6 +343,7 @@ const openWelcomePopup = () => {
             <div class="welcome-popup">
                 <h1 class="welcome-popup-header">Искусство БАМа</h1>
                 <div class="welcome-popup-description">БАМ — одна из крупнейших железных дорог мира, которую возводили миллионы человек на протяжении десятилетия. Такой масштабный проект оставил после себя и огромный культурный пласт. Здесь мы расскажем об истории строительства, жизни и труде рабочих в непростых условиях в архивных фотографиях и картинах от самих строителей магистрали.</div>
+                <h2 class="welcome-popup-header">Инструкция:</h2>
                 <i class="welcome-popup-instruction">Для того, чтобы перемещаться между станциями и узнать их историю, нажми на название станции или точку на карте, и поезд поедет по указанному маршруту. Звуковое сопровождение на сайте можно отключить, нажав на иконку звука.</i>
                 <button class="welcome-popup-btn clickable">Поехали</button>
             </div>
