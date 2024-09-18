@@ -21,6 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isAnimating) {
                 return;
             }
+            const cityId = el.id;
+            const train = document.getElementById('train');
+            const startCityId = parseInt(train.getAttribute('data-current-position'));
+            if (cityId == startCityId) {
+                return;
+            }
+
             openPopup(el);
             moveTo(el);
         });
