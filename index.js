@@ -5,6 +5,8 @@ let isAnimating = false;
 let isMuted = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+    openWelcomePopup();
+
     gsap.registerPlugin(MotionPathPlugin);
     const trajectories = Array.from(document.querySelectorAll("[data-type='trajectory']")).map(el => {
         return {
@@ -37,6 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioToggleEl = document.getElementById('audio-toggle');
     // Добавляем обработчик на иконку аудио для управления звуком
     audioToggleEl.addEventListener('click', toggleSound);
+
+    const infoWelcomePopupBtnEl = document.getElementById('info-btn');
+    infoWelcomePopupBtnEl.addEventListener('click', openWelcomePopup);
 });
 
 const moveTo = (destinationCityEl) => {
@@ -322,3 +327,38 @@ const toggleSoundIcon = () => {
         audioToggleEl.setAttribute('href', 'assets/img/audio_mute.svg');
     }
 }
+
+const openWelcomePopup = () => {
+    const containerEl = document.querySelector(".container");
+
+    // Создаем элемент попапа
+    const popupEl = document.createElement('div');
+    popupEl.classList.add('welcome-popup-container');
+
+    // Наполняем попап содержимым
+    popupEl.innerHTML = `
+        <div class="welcome-popup-wrapper">
+            <div class="welcome-popup">
+                <h1 class="welcome-popup-header">Искусство БАМа</h1>
+                <div class="welcome-popup-description">БАМ — одна из крупнейших железных дорог мира, которую возводили миллионы человек на протяжении десятилетия. Такой масштабный проект оставил после себя и огромный культурный пласт. Здесь мы расскажем об истории строительства, жизни и труде рабочих в непростых условиях в архивных фотографиях и картинах от самих строителей магистрали.</div>
+                <i class="welcome-popup-instruction">Для того, чтобы перемещаться между станциями и узнать их историю, нажми на название станции или точку на карте, и поезд поедет по указанному маршруту. Звуковое сопровождение на сайте можно отключить, нажав на иконку звука.</i>
+                <button class="welcome-popup-btn clickable">Поехали</button>
+            </div>
+        </div>
+    `;
+
+    // Добавляем попап в контейнер
+    containerEl.appendChild(popupEl);
+
+    const welcomePopupBtnEl = document.querySelector('.welcome-popup-btn');
+    welcomePopupBtnEl.addEventListener('click', closeWelcomePopup);
+};
+
+const closeWelcomePopup = () => {
+    // Находим элемент попапа
+    const popupEl = document.querySelector(".welcome-popup-container");
+    // Если попап найден, удаляем его
+    if (popupEl) {
+        popupEl.remove();
+    }
+};

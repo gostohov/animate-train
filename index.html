@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
-    <audio id="train-audio-edet" src="assets/audio/edet.mp3" preload="auto"></audio>
-    <audio id="train-audio-ostanovka" src="assets/audio/ostanovka.mp3" preload="auto"></audio>
 </head>
 <body>
     <div class="container">
@@ -21,7 +19,7 @@
                 <image class="oblako" id="oblako1" href="assets/img/blaks2.svg" x="0" y="0" ></image>
 
                 <image href="assets/img/logo.svg" x="882" y="30" ></image>
-                <image class="clickable" href="assets/img/info.svg" x="30" y="30" width="50px" ></image>
+                <image id="info-btn" class="clickable" href="assets/img/info.svg" x="30" y="30" width="50px" ></image>
                 <image class="clickable" id="audio-toggle" href="assets/img/audio_mute.svg" x="30" y="873" width="50px" ></image>
 
                 <a href="https://https://vk.com/life" target="_blank">
@@ -244,6 +242,8 @@
         </div>
     </div>
 
+    <audio id="train-audio-edet" src="assets/audio/edet.mp3" preload="auto"></audio>
+    <audio id="train-audio-ostanovka" src="assets/audio/ostanovka.mp3" preload="auto"></audio>
     <script src="index.js"></script>
 </body>
 </html>
