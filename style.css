@@ -121,3 +121,11 @@ body {
     cursor: crosshair;
     opacity: .6;
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:active {
+    opacity: .6;
+}

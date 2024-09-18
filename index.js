@@ -1,6 +1,9 @@
 let graphTrajectories;
 let isAnimating = false;
 
+// Флаг для отслеживания состояния звука
+let isMuted = false;
+
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(MotionPathPlugin);
     const trajectories = Array.from(document.querySelectorAll("[data-type='trajectory']")).map(el => {
@@ -22,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
             moveTo(el);
         });
     });
+
+    // Получаем элемент с иконкой аудио
+    const audioToggleEl = document.getElementById('audio-toggle');
+    // Добавляем обработчик на иконку аудио для управления звуком
+    audioToggleEl.addEventListener('click', toggleSound);
 });
 
 const moveTo = (destinationCityEl) => {
@@ -73,6 +81,7 @@ const moveTo = (destinationCityEl) => {
         },
         onUpdate: () => {
             centerScrollOnTrain();
+            setSoundVolume();
         }
     });
 
@@ -275,3 +284,34 @@ const playTrainMoveSound = () => {
 const playTrainStopSound = () => {
     playAudio('train-audio-ostanovka');
 };
+
+// Функция для переключения звука и смены иконки
+const toggleSound = () => {
+    isMuted = !isMuted;
+    toggleSoundIcon();
+    setSoundVolume();
+};
+
+const setSoundVolume = () => {
+    const audioEdet = document.getElementById('train-audio-edet');
+    const audioOstanovka = document.getElementById('train-audio-ostanovka');
+
+    // Переключаем громкость аудио
+    if (!audioEdet.paused) {
+        audioEdet.volume = !isMuted ? 1 : 0;
+    }
+    if (!audioOstanovka.paused) {
+        audioOstanovka.volume = !isMuted ? 1 : 0;
+    }
+}
+
+const toggleSoundIcon = () => {
+    // Получаем элемент с иконкой аудио
+    const audioToggleEl = document.getElementById('audio-toggle');
+    // Меняем иконку
+    if (isMuted) {
+        audioToggleEl.setAttribute('href', 'assets/img/audio_unmute.svg');
+    } else {
+        audioToggleEl.setAttribute('href', 'assets/img/audio_mute.svg');
+    }
+}
