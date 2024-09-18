@@ -52,10 +52,26 @@ const moveTo = (destinationCityEl) => {
             const startCityEl = document.getElementById(startCityId);
             markCityAsPristine(startCityEl);
             markCityAsTouched(destinationCityEl);
+
+            const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
+            const popupFooterNextButtonEl = document.querySelector(".btn-next");
+            popupFooterPrevButtonEl.classList.add('disabled');
+            popupFooterNextButtonEl.classList.add('disabled');
         },
         onComplete: () => {
             // Сбрасываем флаг после завершения всей анимации
-            isAnimating = false; 
+            isAnimating = false;
+
+            const prevCityId = destinationCityEl.dataset.prevcity;
+            if (prevCityId !== undefined) {
+                const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
+                popupFooterPrevButtonEl.classList.remove('disabled');
+            }
+            const nextCityId = destinationCityEl.dataset.nextcity;
+            if (nextCityId !== undefined) {
+                const popupFooterNextButtonEl = document.querySelector(".btn-next");
+                popupFooterNextButtonEl.classList.remove('disabled');
+            }
         }
     });
 
@@ -207,6 +223,9 @@ const openPopup = (cityElement) => {
     if (prevCityId !== undefined) {
         btnPrevEl.classList.remove('disabled');
         btnPrevEl.addEventListener("click", () => {
+            if (isAnimating) {
+                return;
+            }
             closePopup();
             const prevCityEl = document.getElementById(prevCityId);
             openPopup(prevCityEl);
@@ -221,6 +240,9 @@ const openPopup = (cityElement) => {
     if (nextCityId !== undefined) {
         btnNextEl.classList.remove('disabled');
         btnNextEl.addEventListener("click", () => {
+            if (isAnimating) {
+                return;
+            }
             closePopup();
             const nextCityEl = document.getElementById(nextCityId);
             openPopup(nextCityEl);
