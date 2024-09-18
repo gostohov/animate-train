@@ -27,11 +27,12 @@ body {
 .container {
     height: 953px;
     max-width: 1920px;
+    position: relative;
 }
 
 .container.popup-opened {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 35% 65%;
 }
 
 .container.popup-opened > .map {
@@ -44,8 +45,6 @@ body {
 }
 
 .popup-container {
-    top: 0;
-    right: 0;
     width: 100%;
     height: 100%;
     background-color: #D8E2E5;
@@ -58,8 +57,7 @@ body {
 }
 
 .popup-content {
-    padding: 20px;
-    padding-bottom: 0;
+    padding: 20px 20px 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -86,7 +84,7 @@ body {
 
 .popup-body {
     display: grid;
-    grid-template-columns: minmax(0, 500px) 1fr;
+    grid-template-columns: minmax(0, 1fr) 1fr;
     grid-gap: 16px;
     overflow-y: auto;
     font-family: HelveticaNeueLight;
@@ -101,8 +99,7 @@ body {
 .popup-footer {
     display: flex;
     justify-content: space-between;
-    padding: 24px;
-    padding-top: 0;
+    padding: 0 24px 24px;
 }
 
 .popup-footer button {
@@ -120,4 +117,67 @@ body {
     pointer-events: none;
     cursor: crosshair;
     opacity: .6;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:active {
+    opacity: .6;
+}
+
+.welcome-popup-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(0 0 0 / 12%);
+    backdrop-filter: saturate(180%) blur(10px);
+    display: grid;
+    place-items: center;
+    font-family: HelveticaNeueLight;
+}
+
+.welcome-popup-wrapper {
+    background-color: #D8E2E5;
+    width: 40%;
+    height: 70%;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+}
+
+.welcome-popup {
+    width: 80%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    gap: 24px;
+    grid-template-rows: 1fr min-content min-content min-content 1fr;
+    text-align: center;
+}
+
+.welcome-popup-header {
+    font-family: OldRus;
+}
+
+.welcome-popup-description {
+    font-size: 20px;
+}
+
+.welcome-popup-instruction {
+    font-size: 20px;
+}
+
+.welcome-popup-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #E42918;
+    font-family: OldRus;
+    border-radius: 8px;
 }
