@@ -40,12 +40,12 @@ const moveTo = (destinationCityEl) => {
         return;
     }
 
-    // Устанавливаем флаг для предотвращения новых анимаций
-    isAnimating = true;
-
     // Создаем GSAP timeline для последовательной анимации движения поезда по каждому пути
     const timeline = gsap.timeline({
         onStart: () => {
+            // Устанавливаем флаг для предотвращения новых анимаций
+            isAnimating = true;
+
             // заменяем иконки городов
             const startCityEl = document.getElementById(startCityId);
             markCityAsPristine(startCityEl);
@@ -76,7 +76,7 @@ const moveTo = (destinationCityEl) => {
         }
     });
 
-    pathIds.forEach((pathId) => {
+    pathIds.forEach((pathId, index) => {
         const endPoints = pathId.split("-");
         const start = parseInt(endPoints[0]);
         const end = parseInt(endPoints[1]);
@@ -85,7 +85,7 @@ const moveTo = (destinationCityEl) => {
         // Добавляем анимацию для каждого пути в последовательность
         const path = document.getElementById(pathId);
         timeline.to(train, {
-            duration: 1, // Время для перехода по данному пути
+            duration: 3, // Время для перехода по данному пути
             ease: "none",
             motionPath: {
                 path: path, // Указываем путь для анимации
@@ -96,6 +96,14 @@ const moveTo = (destinationCityEl) => {
                 end: isMovingBackward ? 0 : 1
             },
             onStart: () => {
+                if (pathIds.length - 1 == index) {
+                    // Воспроизведение звука остановки, на последнем участке
+                    playTrainStopSound();
+                } else {
+                    // Воспроизводим звук движения поезда при старте анимации
+                    playTrainMoveSound();
+                }
+
                 // Обновляем позицию поезда в начале каждой анимации
                 train.setAttribute('data-current-position', end);
 
@@ -247,3 +255,23 @@ const closePopup = () => {
         containerEl.classList.remove('popup-opened');
     }
 }
+
+const playAudio = (audioId) => {
+    const audioElement = document.getElementById(audioId);
+    if (audioElement) {
+        audioElement.currentTime = 0; // Сброс времени воспроизведения на начало
+        audioElement.play().catch(error => {
+            console.error("Ошибка при воспроизведении аудио:", error);
+        });
+    }
+};
+
+// Воспроизведение звука движения поезда
+const playTrainMoveSound = () => {
+    playAudio('train-audio-edet');
+};
+
+// Воспроизведение звука остановки поезда
+const playTrainStopSound = () => {
+    playAudio('train-audio-ostanovka');
+};
