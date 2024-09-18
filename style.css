@@ -32,7 +32,7 @@ body {
 
 .container.popup-opened {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 35% 65%;
 }
 
 .container.popup-opened > .map {
@@ -84,7 +84,7 @@ body {
 
 .popup-body {
     display: grid;
-    grid-template-columns: minmax(0, 500px) 1fr;
+    grid-template-columns: minmax(0, 1fr) 1fr;
     grid-gap: 16px;
     overflow-y: auto;
     font-family: HelveticaNeueLight;
