@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelectorAll("[data-type='city']").forEach(el => {
         el.addEventListener("click", () => {
+            if (isAnimating) {
+                return;
+            }
             openPopup(el);
             moveTo(el);
         });
@@ -22,11 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const moveTo = (destinationCityEl) => {
-    if (isAnimating) {
-        // Если анимация уже идёт, игнорируем новое действие
-        return;
-    }
-
     const destinationCityId = destinationCityEl.id;
 
     // Получаем элемент поезда
@@ -72,6 +70,9 @@ const moveTo = (destinationCityEl) => {
                 const popupFooterNextButtonEl = document.querySelector(".btn-next");
                 popupFooterNextButtonEl.classList.remove('disabled');
             }
+        },
+        onUpdate: () => {
+            centerScrollOnTrain();
         }
     });
 
@@ -104,13 +105,6 @@ const moveTo = (destinationCityEl) => {
                 } else {
                     train.setAttribute('href', 'assets/img/train.svg');
                 }
-
-                // Центрируем вьюпорт на поезде
-                centerScrollOnTrain();
-            },
-            onComplete: () => {
-                // Центрируем вьюпорт на поезде
-                centerScrollOnTrain();
             }
         });
     });
@@ -174,16 +168,13 @@ const buildGraph = (trajectories) => {
 
 const centerScrollOnTrain = () => {
     const train = document.getElementById('train');
-    train.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    train.scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
 };
 
 const openPopup = (cityElement) => {
-    const containerEl = document.querySelector(".container");
+    closePopup();
 
-    // Если попап уже открыт, не создаем новый
-    if (document.querySelector(".popup-container")) {
-        return;
-    }
+    const containerEl = document.querySelector(".container");
 
     // Создаем элемент попапа
     const popupEl = document.createElement('div');
@@ -223,10 +214,6 @@ const openPopup = (cityElement) => {
     if (prevCityId !== undefined) {
         btnPrevEl.classList.remove('disabled');
         btnPrevEl.addEventListener("click", () => {
-            if (isAnimating) {
-                return;
-            }
-            closePopup();
             const prevCityEl = document.getElementById(prevCityId);
             openPopup(prevCityEl);
             moveTo(prevCityEl);
@@ -240,10 +227,6 @@ const openPopup = (cityElement) => {
     if (nextCityId !== undefined) {
         btnNextEl.classList.remove('disabled');
         btnNextEl.addEventListener("click", () => {
-            if (isAnimating) {
-                return;
-            }
-            closePopup();
             const nextCityEl = document.getElementById(nextCityId);
             openPopup(nextCityEl);
             moveTo(nextCityEl);
