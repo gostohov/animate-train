@@ -85,7 +85,7 @@ html, body {
     width: 35px;
     height: 35px;
     border: 2px solid;
-    border-radius: 18px;
+    border-radius: 50%;
     cursor: pointer;
     color: #D90000;
     margin: 5px;
