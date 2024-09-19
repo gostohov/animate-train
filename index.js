@@ -204,7 +204,11 @@ const buildGraph = (trajectories) => {
 
 const centerScrollOnTrain = () => {
     const train = document.getElementById('train');
-    train.scrollIntoView({ block: "center", inline: "center" });
+    scrollIntoView(train, {
+        time: 0,
+        validTarget: (target, parentsScrolled) => document.querySelector(".map-container") == target,
+        isScrollable: (target, defaultIsScrollable) => true
+    });
 };
 
 const openPopup = (cityElement) => {
