@@ -82,13 +82,12 @@ html, body {
 }
 
 .btn-close {
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
     border: 2px solid;
     border-radius: 50%;
     cursor: pointer;
     color: #D90000;
-    margin: 5px;
     flex-shrink: 0;
     display: grid;
     place-items: center;
@@ -173,6 +172,13 @@ html, body {
     height: 100%;
     max-height: 600px;
     max-width: 700px;
+    position: relative;
+}
+
+.welcome-popup-wrapper > .btn-close {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .welcome-popup {
@@ -329,5 +335,10 @@ html, body {
     .popup-footer > .btn-next {
         font-size: 12px;
         padding: 8px;
+    }
+
+    .btn-close {
+        width: 24px;
+        height: 24px;
     }
 }

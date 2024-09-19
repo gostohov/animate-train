@@ -375,6 +375,9 @@ const openWelcomePopup = () => {
 
     const welcomePopupBtnEl = document.querySelector('.welcome-popup-btn');
     welcomePopupBtnEl.addEventListener('click', closeWelcomePopup);
+
+    const btnClose = document.querySelector('.btn-close');
+    btnClose.addEventListener('click', closeWelcomePopup);
 };
 
 const closeWelcomePopup = () => {
