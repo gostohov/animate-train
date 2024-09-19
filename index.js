@@ -212,6 +212,13 @@ const openPopup = (cityElement) => {
     popupEl.classList.add('popup-container');
 
     // Наполняем попап содержимым
+    let additionalPopupBodyFigure = '';
+    if (cityElement.dataset.imagepath2) {
+        additionalPopupBodyFigure += `<img src="${cityElement.dataset.imagepath2}" alt="Изображение города">`;
+    }
+    if (cityElement.dataset.caption2) {
+        additionalPopupBodyFigure += `<figcaption>${cityElement.dataset.caption2}</figcaption>`;
+    }
     popupEl.innerHTML = `
         <div class="popup-content">
             <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
@@ -219,11 +226,10 @@ const openPopup = (cityElement) => {
                 <h1>${cityElement.dataset.cityname}</h1>
             </div>
             <div class="popup-body">
-                <figure>
+                <figure class="popup-body-figure">
                     <img src="${cityElement.dataset.imagepath1}" alt="Изображение города">
                     <figcaption>${cityElement.dataset.caption1}</figcaption></br>
-                    <img src="${cityElement.dataset.imagepath2}" alt="Изображение города" onerror="this.style.display='none';">
-                    <figcaption>${cityElement.dataset.caption2}</figcaption>
+                    ${additionalPopupBodyFigure}
                 </figure>
                 <p>${cityElement.dataset.description}</p>
             </div>
@@ -233,6 +239,8 @@ const openPopup = (cityElement) => {
             <button class="btn-next">Следующая станция</button>
         </div>
     `;
+
+    const popupBodyFigureEl = document.querySelector('.popup-body-figure');
 
     // Добавляем к контейнеру стили
     containerEl.classList.add('popup-opened');
