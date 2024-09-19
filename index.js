@@ -4,6 +4,8 @@ let isAnimating = false;
 // Флаг для отслеживания состояния звука
 let isMuted = false;
 
+let movingToCityId;
+
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     preloader.remove();
@@ -25,13 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelectorAll("[data-type='city']").forEach(el => {
         el.addEventListener("click", () => {
+            const cityId = el.id;
+
             if (isAnimating) {
+                if (cityId == movingToCityId) {
+                    openPopup(el);
+                }
+
                 return;
             }
 
             openPopup(el);
 
-            const cityId = el.id;
             const train = document.getElementById('train');
             const startCityId = parseInt(train.getAttribute('data-current-position'));
             if (cityId == startCityId) {
@@ -70,6 +77,8 @@ const moveTo = (destinationCityEl) => {
     // Создаем GSAP timeline для последовательной анимации движения поезда по каждому пути
     const timeline = gsap.timeline({
         onStart: () => {
+            movingToCityId = destinationCityId;
+
             // Устанавливаем флаг для предотвращения новых анимаций
             isAnimating = true;
 
@@ -78,29 +87,21 @@ const moveTo = (destinationCityEl) => {
             markCityAsPristine(startCityEl);
             markCityAsTouched(destinationCityEl);
 
-            const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
-            const popupFooterNextButtonEl = document.querySelector(".btn-next");
-            popupFooterPrevButtonEl.classList.add('disabled');
-            popupFooterNextButtonEl.classList.add('disabled');
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         },
         onComplete: () => {
             // Сбрасываем флаг после завершения всей анимации
             isAnimating = false;
 
-            const prevCityId = destinationCityEl.dataset.prevcity;
-            const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
-            if (prevCityId !== undefined && popupFooterPrevButtonEl) {
-                popupFooterPrevButtonEl.classList.remove('disabled');
-            }
-            const nextCityId = destinationCityEl.dataset.nextcity;
-            const popupFooterNextButtonEl = document.querySelector(".btn-next");
-            if (nextCityId !== undefined && popupFooterNextButtonEl) {
-                popupFooterNextButtonEl.classList.remove('disabled');
-            }
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         },
         onUpdate: () => {
             centerScrollOnTrain();
             setSoundVolume();
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         }
     });
 
@@ -257,32 +258,64 @@ const openPopup = (cityElement) => {
     // Добавляем callback на кнопку закрытия попапа
     document.querySelector(".btn-close").addEventListener("click", () => closePopup());
 
+    togglePopupPrevBtn(cityElement);
     const btnPrevEl = document.querySelector(".btn-prev");
+    btnPrevEl.addEventListener("click", () => {
+        const prevCityId = cityElement.dataset.prevcity;
+        const prevCityEl = document.getElementById(prevCityId);
+        openPopup(prevCityEl);
+        moveTo(prevCityEl);
+    });
+
+    togglePopupNextBtn(cityElement);
+    const btnNextEl = document.querySelector(".btn-next");
+    btnNextEl.addEventListener("click", () => {
+        const nextCityId = cityElement.dataset.nextcity;
+        const nextCityEl = document.getElementById(nextCityId);
+        openPopup(nextCityEl);
+        moveTo(nextCityEl);
+    });
+}
+
+const togglePopupPrevBtn = (cityElement) => {
+    const btnPrevEl = document.querySelector(".btn-prev");
+    if (!btnPrevEl) {
+        return;
+    }
+
+    if (isAnimating) {
+        btnPrevEl.classList.add('disabled');
+        return;
+    }
+
     const prevCityId = cityElement.dataset.prevcity;
     if (prevCityId !== undefined) {
         btnPrevEl.classList.remove('disabled');
-        btnPrevEl.addEventListener("click", () => {
-            const prevCityEl = document.getElementById(prevCityId);
-            openPopup(prevCityEl);
-            moveTo(prevCityEl);
-        });
     } else {
         btnPrevEl.classList.add('disabled');
     }
+}
 
+const togglePopupNextBtn = (cityElement) => {
     const btnNextEl = document.querySelector(".btn-next");
+    if (!btnNextEl) {
+        return;
+    }
+
+    if (isAnimating) {
+        btnNextEl.classList.add('disabled');
+        return;
+    }
+
     const nextCityId = cityElement.dataset.nextcity;
     if (nextCityId !== undefined) {
         btnNextEl.classList.remove('disabled');
-        btnNextEl.addEventListener("click", () => {
-            const nextCityEl = document.getElementById(nextCityId);
-            openPopup(nextCityEl);
-            moveTo(nextCityEl);
-        });
     } else {
         btnNextEl.classList.add('disabled');
     }
 }
+
+
 
 const closePopup = () => {
     // Находим элемент попапа
