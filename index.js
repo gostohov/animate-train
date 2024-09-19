@@ -204,7 +204,7 @@ const buildGraph = (trajectories) => {
 
 const centerScrollOnTrain = () => {
     const train = document.getElementById('train');
-    train.scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+    train.scrollIntoView({ block: "center", inline: "center" });
 };
 
 const openPopup = (cityElement) => {
