@@ -47,11 +47,11 @@ html, body {
 }
 
 .container.popup-opened > .map-container > svg {
-    width: unset;
+    width: 100vmax;
 }
 
 .container.popup-opened > .map-container > .map {
-    min-width: max-content;
+    width: max-content;
 }
 
 .map {
