@@ -373,3 +373,12 @@ const closeWelcomePopup = () => {
         popupEl.remove();
     }
 };
+
+window.addEventListener('load', function() {
+    // Скрыть прелоадер
+    const preloader = document.getElementById('preloader');
+    const content = document.querySelector('.content');
+
+    preloader.style.display = 'none'; // Скрываем прелоадер
+    content.style.display = 'block'; // Показываем контент
+});
