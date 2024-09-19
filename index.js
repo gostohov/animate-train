@@ -329,10 +329,10 @@ const setSoundVolume = () => {
 
     // Переключаем громкость аудио
     if (!audioEdet.paused) {
-        audioEdet.volume = !isMuted ? 1 : 0;
+        audioEdet.muted = isMuted;
     }
     if (!audioOstanovka.paused) {
-        audioOstanovka.volume = !isMuted ? 1 : 0;
+        audioOstanovka.muted = isMuted;
     }
 }
 
