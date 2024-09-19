@@ -4,6 +4,11 @@ let isAnimating = false;
 // Флаг для отслеживания состояния звука
 let isMuted = false;
 
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.remove();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     openWelcomePopup();
 
