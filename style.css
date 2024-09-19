@@ -290,13 +290,18 @@ html, body {
         y: 240;
     }
 
+    .container > .map-container {
+        overflow: scroll;
+    }
+
     .container > .map-container > svg {
-        width: max-content;
-        height: 100vmax;
+        width: unset;
+        height: 100%;
     }
 
     .container.popup-opened > .map-container > svg {
-        width: max-content;
+        width: 100vmax;
+        height: unset;
     }
 
     .container.popup-opened {
