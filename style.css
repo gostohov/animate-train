@@ -102,7 +102,7 @@ html, body {
 
 .popup-body {
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) 1fr;
+    grid-template-columns: minmax(0, 0.7fr) 1fr;
     grid-gap: 40px;
     overflow-y: auto;
     font-family: HelveticaNeueLight;
