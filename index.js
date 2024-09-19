@@ -240,8 +240,6 @@ const openPopup = (cityElement) => {
         </div>
     `;
 
-    const popupBodyFigureEl = document.querySelector('.popup-body-figure');
-
     // Добавляем к контейнеру стили
     containerEl.classList.add('popup-opened');
     // Добавляем попап в контейнер
