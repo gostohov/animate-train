@@ -90,6 +90,8 @@ html, body {
     color: #D90000;
     margin: 5px;
     flex-shrink: 0;
+    display: grid;
+    place-items: center;
 }
 
 .btn-close:active {
@@ -203,12 +205,6 @@ html, body {
     font-family: OldRus;
     border-radius: 8px;
 }
-
-/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
-/** {
-  scrollbar-width: thin;
-  scrollbar-color: #D90000 #DFE9EB;
-}*/
 
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {

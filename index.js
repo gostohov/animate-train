@@ -230,7 +230,7 @@ const openPopup = (cityElement) => {
     }
     popupEl.innerHTML = `
         <div class="popup-content">
-            <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true" style="margin-bottom: 0.15em;"></i></button>
+            <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
             <div class="popup-header">
                 <h1>${cityElement.dataset.cityname}</h1>
             </div>
