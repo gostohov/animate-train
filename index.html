@@ -8,10 +8,14 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
         <link rel="icon" href="assets/img/favicon.ico" type="image/ico">
+        <link rel="preload"
+              href="assets/img/train_reverse.svg"
+              as="image"
+              type="image/svg+xml" />
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
-        <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+        <!-- Yandex.Metrika counter
+        <script type="text/javascript" >
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();
        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -24,36 +28,39 @@
             accurateTrackBounce:true,
             webvisor:true
        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/98369091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/98369091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>-->
     <!-- /Yandex.Metrika counter -->
 
     </head>
     <body>
         <div class="container">
             <div class="map-container">
+                <div id="preloader">
+                    <div class="loader"></div>
+                </div>
                 <svg viewBox="0 0 1920 955.5" xmlns="http://www.w3.org/2000/svg">
                     <image style="overflow:visible;" width="1920" height="953" xlink:href="assets/img/backdrop.jpg"  transform="matrix(1 0 0 1 -0.6359 -0.4794)"></image>
                     <image class="map" href="assets/img/map.svg"></image>
-                    <image href="assets/img/clouds2.svg"></image>
+                    <image class="map" href="assets/img/clouds2.svg"></image>
                     <image href="assets/img/clouds1.svg"  x="0" y="-4" height="961"></image>
                     <image href="assets/img/Logo_rzd.svg" x="882" y="30" style="width: 137px;"></image>
                     <image id="info-btn" class="clickable" href="assets/img/info.png" x="30" y="30" width="50px" ></image>
                     <image class="clickable" id="audio-toggle" href="assets/img/audio_mute.svg" x="115" y="30" width="50px"></image>
 
                     <a href="https://vk.com/life" target="_blank">
-                        <image href="assets/img/logovk.svg" x="1835" y="30" width="50px" ></image>
+                        <image id="logovk" href="assets/img/logovk.svg" x="1835" y="30" width="50px" ></image>
                     </a>
                     <a href="https://t.me/lifenews" target="_blank">
-                        <image href="assets/img/logotg.svg" x="1750" y="30" width="50px" ></image>
+                        <image id="logotg" href="assets/img/logotg.svg" x="1750" y="30" width="50px" ></image>
                     </a>
 
                 <image data-type="city"
-                       data-cityname="Тайшет"
+                       data-cityname="Начало строительства"
                        data-nextcity="6"
                        data-imagepath1="assets/img/dataset/тайшет.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>Разгрузка шпал на строительстве 2-х путей железной дороги Тайшет-Лена.</br>
-                       Источник: Усть-Кутский исторический музей.</i>"
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>Разгрузка шпал на строительстве 2-х путей железной дороги Тайшет-Лена.</br>
+                       Источник: Усть-Кутский исторический музей.</p>"
                        data-description="Началом Байкало-Амурской магистрали считается небольшой город Тайшет в Иркутской области. Там, на 4521-м км Транссибирской магистрали, стартовал удивительный по своему масштабу, значению и сложности индустриальный проект.</br></br>
 
                        Строительство железной дороги между Байкалом и Тихим океаном обсуждали ещё в конце XIX века. Экспедиции пришли к выводу, что Российская империя не сможет выполнить столь сложную и затратную задачу. Идея не была забыта надолго, и уже в 1924 году молодая советская власть вернулась к изысканиям.</br></br>
@@ -65,20 +72,20 @@
                        Новой дороге предстояло пронзить тайгу на 4300 км от Сибири до Дальнего Востока. Ответвления должны были подключить к магистрали такие отдалённые уголки страны, как Якутия. На протяжении 10 лет стройка БАМа будет главным проектом Страны Советов — стройкой века.</br></br>
                        "
                        data-caption2=" "
-                       cursor="pointer" id="0" href="assets/img/тайшет_красный.svg" x="177" y="473" width="125px"></image>
+                       cursor="pointer" id="0" href="assets/img/тайшет_красный.svg" x="177" y="407" width="125px"></image>
 
                 <image data-type="city"
-                       data-cityname="Северобайкальск"
+                       data-cityname="Города БАМа"
                        data-prevcity="0"
                        data-nextcity="7"
                        data-imagepath1="assets/img/dataset/северобайкальск1.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Первые дома Северобайкальска», Архипов В.Ф.</br>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Первые дома Северобайкальска», Архипов В.Ф.</br>
                        Источник: «Художественно-историческое объединение».
-                       </i>"
+                       </p>"
                        data-imagepath2="assets/img/dataset/северобайкальск2.jpg"
-                       data-caption2="<i style=&#34;font-size: 16px;&#34;>«Строители БАМа», Скриплёв А.В.</br>
+                       data-caption2="<p style=&#34;font-size: 14px;&#34;>«Строители БАМа», Скриплёв А.В.</br>
                        Источник: «Художественно-историческое объединение».
-                       </i>"
+                       </p>"
                        data-description="БАМ — это не только сама магистраль, но и целые города, которые строились для нужд железной дороги. На пути БАМа расположено 63 населённых пункта, 3 из которых возвели с нуля — Тынду, Северобайкальск и Февральск.</br></br>
 
                        Нередкой была ситуация, когда строительные отряды из национальных республик брали на себя обязательство по строительству населённых пунктов — следы национального колорита в этих местах можно найти и спустя 40 лет после окончания стройки века.</br></br>
@@ -90,13 +97,13 @@
 
 
                 <image data-type="city"
-                       data-cityname="Кунерма"
+                       data-cityname="семьи БАМа"
                        data-prevcity="6"
                        data-nextcity="8"
                        data-imagepath1="assets/img/dataset/кунерма.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Свадьба на БАМе», репродукция с картины Глазунова И.</br>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Свадьба на БАМе», репродукция с картины Глазунова И.</br>
                        Источник: Музей истории БАМа (Тында).
-                       </i>"
+                       </p>"
                        data-description="Учитывая возраст строителей БАМа, создание семей на магистрали было вопросом времени. Точное число ячеек общества, созданных благодаря стройке века, посчитать невозможно, но в одной только Тынде, говорят, ежегодно регистрировали 500-600 браков.</br></br>
 
                         А вот количество рождённых детей посчитать уже легче. За первые три года стройки на свет появились 21 000 малышей. К 1979 году построили более 30 детских садов.</br></br>
@@ -106,16 +113,16 @@
                         Свадебные платья переходили от одной невесты к другой, праздновали событие в общежитиях, а в загс ездили на украшенных шариками «магирусах» — исполинских самосвалах, заказанных специально для стройки в ФРГ.</br></br>
 
                         "
-                        data-caption2="Илья Глазунов — один из самых заметных художников, писавших на БАМе. Однако на стройку магистрали он попал как в «творческую ссылку». В 1977-м году художник закончил масштабное полотно «Мистерия ХХ век», которое власти признали крамольным. В наказание Глазунова отправили в Сибирь писать стройку века. Однако и этот период биографии стал для художника весьма плодотворным — с БАМа он привёз около 200 картин, которые занимают заметное место в его творческой биографии."
+                        data-caption2="<i>Илья Глазунов — один из самых заметных художников, писавших на БАМе. Однако на стройку магистрали он попал как в «творческую ссылку». В 1977-м году художник закончил масштабное полотно «Мистерия ХХ век», которое власти признали крамольным. В наказание Глазунова отправили в Сибирь писать стройку века. Однако и этот период биографии стал для художника весьма плодотворным — с БАМа он привёз около 200 картин, которые занимают заметное место в его творческой биографии.</i>"
                         cursor="pointer" id="7" href="assets/img/кунерма.svg" x="579" y="422" width="127px"></image>
 
                 <image data-type="city"
-                       data-cityname="Поселок Курлы"
+                       data-cityname="Строители БАМа"
                        data-prevcity="7"
                        data-nextcity="9"
                        data-imagepath1="assets/img/dataset/курлы1.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Куст рябины», Чистяков О.М.</br>
-                       Источник: «Художественно-историческое объединение».</i>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Куст рябины», Чистяков О.М.</br>
+                       Источник: «Художественно-историческое объединение».</p>
                        "
                        data-description="В 1974 году Брежнев объявил, что грядущая стройка — в первую очередь стройка молодёжи. Социалистической молодёжи предстояло самостоятельно работать на своё будущее и реализовывать самый масштабный инфраструктурный проект в истории СССР. Первый же студенческий строительный отряд был организован на том же съезде, где Брежнев призвал комсомольцев присоединиться к строительству. Начальником штаба строительства назначили секретаря ЦК ВЛКСМ Дмитрия Филиппова. На тот момент ему было всего 29 лет. </br></br>
 
@@ -128,20 +135,20 @@
                        На БАМе все равны: и колхозный слесарь, и сын партийного бонзы. Стройка магистрали стала настоящим плавильным котлом, высшим проявлением братства и интернационализма. </br></br>
                        "
                        data-imagepath2="assets/img/dataset/курлы2.jpg"
-                       data-caption2="<i style=&#34;font-size: 16px;&#34;>Посвящение в бойцы ССО студентов, которые впервые выехали на строительство БАМа. ССО «Ангара». 1975 г. Подлинник.<br>
+                       data-caption2="<p style=&#34;font-size: 14px;&#34;>Посвящение в бойцы ССО студентов, которые впервые выехали на строительство БАМа. ССО «Ангара». 1975 г. Подлинник.<br>
                        Источник: Центральный музей железнодорожного транспорта Российской Федерации.
-                       </i>
-                       <p style=&#34;font-family: 'HelveticaNeueLight', sans-serif;&#34;></br>Посвящение в бойцы Студенческого Строительного Отряда стало традицией для вновь прибывших строителей БАМа. На фото посвящение проходит строительный отряд «Ангара», прибывший из Ленинграда в 1975 году. </p>"
+                       </p>
+                       <i></br>Посвящение в бойцы Студенческого Строительного Отряда стало традицией для вновь прибывших строителей БАМа. На фото посвящение проходит строительный отряд «Ангара», прибывший из Ленинграда в 1975 году. </i>"
                        cursor="pointer" id="8" href="assets/img/курлы.svg" x="725" y="471" width="207px"></image>
 
                 <image data-type="city"
-                       data-cityname="Поселок Уоян"
+                       data-cityname="Условия жизни"
                        data-prevcity="8"
                        data-nextcity="10"
                        data-imagepath1="assets/img/dataset/уоян.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Посёлок мехколонны», Чистяков О.М. </br>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Посёлок мехколонны», Чистяков О.М. </br>
                        Источник: «Художественно-историческое объединение».
-                       </i>"
+                       </p>"
                        data-description="Жизнь строителей БАМа была невероятно трудной и богатой на приключения. Часто стройотряды обеспечивали свой быт самостоятельно.</br></br>
 
                        В первые годы стройки бойцы студенческих строительных отрядов селились в палатках по 20 - 40 человек. Это были суровые условия. В холодное время года такие палатки обогревали печками. Иногда их приходилось ставить по несколько штук в палатку. </br></br>
@@ -156,13 +163,13 @@
                        cursor="pointer" id="9" href="assets/img/уоян.svg" x="666" y="299" width="167px"></image>
 
                 <image data-type="city"
-                       data-cityname="Северомуйск"
+                       data-cityname="Техника БАМа"
                        data-prevcity="9"
                        data-nextcity="11"
                        data-imagepath1="assets/img/dataset/северомуйск.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Вертолёты служат БАМу», Рудь Т.А. </br>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Вертолёты служат БАМу», Рудь Т.А. </br>
                        Источник: «Художественно-историческое объединение».
-                       </i>"
+                       </p>"
                        data-description="БАМ — сложнейший инфраструктурный объект, не имеющий аналогов в мире. И подходы к его строительству тоже во многом были нестандартные. </br></br>
 
                         Ещё в 1937 году стало понятно, что разведку удобнее, а чаще и безопаснее вести с воздуха. Пришлось применить передовую для того времени технологию аэрофотосъёмки. </br></br>
@@ -176,18 +183,18 @@
                         Ещё один технический символ БАМа — это малая авиация, которая развернулась на БАМе в полный рост. Строители вспоминают, что вертолёты работали в режиме маршрутки. </br></br>
                         "
                        data-imagepath2="assets/img/dataset/северомуйск2.jpg"
-                       data-caption2="<i style=&#34;font-size: 16px;&#34;>«Тоннельщик. Автопортрет», Андреев А.И.</br>
+                       data-caption2="<p style=&#34;font-size: 14px;&#34;>«Тоннельщик. Автопортрет», Андреев А.И.</br>
                        Источник: «Художественно-историческое объединение».
-                       </i>"
+                       </p>"
                        cursor="pointer" id="10" href="assets/img/северомуйск.svg" x="816" y="232" width="180px"></image>
 
                 <image data-type="city"
-                       data-cityname="Разъезд Бальбухта"
+                       data-cityname="«Золотые рельсы»"
                        data-prevcity="10"
                        data-nextcity="12"
                        data-imagepath1="assets/img/dataset/бальбухта.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>Памятная стела на месте стыковки главного железнодорожного пути БАМ на разъезде Балбухта 29 сентября 1984 г.</br>
-                       Источник: «Художественно-историческое объединение».</i>"
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>Памятная стела на месте стыковки главного железнодорожного пути БАМ на разъезде Балбухта 29 сентября 1984 г.</br>
+                       Источник: «Художественно-историческое объединение».</p>"
                        data-description="29 сентября 1984 года в 10 часов 10 минут по московскому времени встретились строительные бригады Александра Бондаря и Ивана Варшавского. Они укладывали участок дороги одновременно с Запада и Востока — и встретились тут, на 1603-м километре Байкало-Амурской магистрали.</br></br>
 
                        Магистраль строили не линейно и последовательно, а одновременно на разных участках. И именно здесь завершилось объединение отрезков в единую транспортную систему. Движение с западного и восточного направлений строительства друг к другу заняло 10 лет. Стройка БАМа закончилась, а небольшой разъезд Балбухта оказался вписан в историю.</br></br>
@@ -200,28 +207,28 @@
                        cursor="pointer" id="11" href="assets/img/бальбуха.svg" x="919" y="334" width="240px"></image>
 
                 <image data-type="city"
-                       data-cityname="Тында"
+                       data-cityname="БАМ сегодня"
                        data-prevcity="11"
                        data-nextcity="13"
                        data-imagepath1="assets/img/dataset/тында.JPG"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>Источник: Центр развития территорий Амурской области.</i>"
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>Источник: Центр развития территорий Амурской области.</p>"
                        data-description="Новая глава в истории БАМа началась в 2013 году, когда утвердили проект модернизации Восточного полигона железных дорог. </br></br>
 
                        В современной России значимость БАМа только возросла. Увеличение грузоперевозок и позволяет наращивать устойчивое сотрудничество со странами Востока. По старой традиции, строители современного БАМа получают весьма приличные зарплаты, которые значительно выше тех, что можно получить на «большой земле».</br></br>
 
                        И по ещё одной традиции РЖД не забывает поддерживать художников. Однако новые времена — новые форматы. И теперь творчески осмысляют БАМ не только в стихах, песнях и картинах, но и в уличном искусстве. РЖД поддерживает молодых художников, которые украшают граффити и муралами города и пути следования поездов БАМа.</br></br>
                        "
-                       data-caption2="В  2023 году столицу БАМа, Тынду, украсили муралы художника Павла Малицкого из творческого объединения «33+1». На фасадах панельных домов и Музея истории БАМа автор нанёс изображения, посвящённые БАМу и его строителям. Один из эскизов разработала нейросеть.</br></br>"
+                       data-caption2="<i>В  2023 году столицу БАМа, Тынду, украсили муралы художника Павла Малицкого из творческого объединения «33+1». На фасадах панельных домов и Музея истории БАМа автор нанёс изображения, посвящённые БАМу и его строителям. Один из эскизов разработала нейросеть.</i></br></br>"
                        cursor="pointer" id="12" href="assets/img/тында.svg" x="1086" y="510" width="100px"></image>
 
                 <image data-type="city"
-                       data-cityname="Мост в Нерюнгри"
+                       data-cityname="Малый БАМ"
                        data-prevcity="12"
                        data-nextcity="14"
-                       data-imagepath1="assets/img/dataset/Нерюнгри.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>БАМ. Строительство эстакадного моста в Нерюнгри. Октябрь 1978.</br>
+                       data-imagepath1="assets/img/dataset/nerungri.jpg"
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>БАМ. Строительство эстакадного моста в Нерюнгри. Октябрь 1978.</br>
                        Источник: Центральный музей железнодорожного транспорта Российской Федерации.
-                       </i>"
+                       </p>"
                        data-description="Малый БАМ — это неофициальное название железнодорожной ветки, которая соединяет город Нерюнгри в Якутии с сетью железных дорог. Строительство этой ветки началось в 1970-х годах и было связано с разработкой угольных месторождений в районе Нерюнгри.</br></br>
 
                        Если строительство основной нитки БАМа было сложным, то проложить Малый БАМ было ещё сложнее: стройка зачастую проходила в условиях вечной мерзлоты. Однако благодаря этому проекту удалось создать транспортную инфраструктуру, необходимую для освоения природных ресурсов региона и развития его экономики.</br></br>
@@ -231,18 +238,18 @@
                        В настоящее время ведётся работа по модернизации Малого БАМа. Это позволит повысить пропускную способность ветки и сделать её более эффективной. Ожидается, что после завершения модернизации Малый БАМ станет ещё более важным звеном в транспортной системе России.</br></br>
                        "
                        data-caption2=" "
-                       cursor="pointer" id="13" href="assets/img/нерюнгри.svg" x="1159" y="430" width="280px"></image>
+                       cursor="pointer" id="13" href="assets/img/nerungri.svg" x="1159" y="430" width="280px"></image>
 
                 <image data-type="city"
-                       data-cityname="Ж/Д мост река Ульма"
+                       data-cityname="Технические решения БАМа"
                        data-prevcity="13"
                        data-imagepath1="assets/img/dataset/ульма.jpg"
-                       data-caption1="<i style=&#34;font-size: 16px;&#34;>«Строительство моста через реку Ульму».</br>
-                       Источник: Музей железных дорог России.</i>
+                       data-caption1="<p style=&#34;font-size: 14px;&#34;>«Строительство моста через реку Ульму».</br>
+                       Источник: Музей железных дорог России.</p>
                        "
                        data-description="На сложность строительства магистрали в условиях тайги указывали ещё дореволюционные экспедиции. Суровый климат, сложный рельеф и удалённость от промышленных центров делали БАМ если не невозможным, то невероятно трудным проектом.</br></br>
 
-                       Инженерам пришлось проделать колоссальную работу, чтобы пробить путь магистрали через тайгу. В результате их труда на трассе дороги появилjсь 2230 мостов и десять тоннелей. Один из них, Северомуйский тоннель, стал самым протяжённым в России.</br></br>
+                       Инженерам пришлось проделать колоссальную работу, чтобы пробить путь магистрали через тайгу. В результате их труда на трассе дороги появилось 2230 мостов и десять тоннелей. Один из них, Северомуйский тоннель, стал самым протяжённым в России.</br></br>
 
                        Его протяжённость составляет 15 343 метра, а строительство заняло 26 лет — открыли тоннель уже в современной России в 2003 году. Введение этого объекта в эксплуатацию позволило сократить путь через Ангараканский перевал с 57 до 23 километров.</br></br>
 
@@ -253,7 +260,7 @@
                        data-caption2=" "
                        cursor="pointer" id="14" href="assets/img/ульма.svg" x="1279" y="506" width="270px"></image>
 
-                    <image style="pointer-events: none;" id="train" href="assets/img/train.svg" x="152" y="477" width="170" data-current-position="0"></image>
+                    <image style="pointer-events: none;" id="train" href="assets/img/train.svg" x="152" y="477" width="140" data-current-position="0"></image>
 
                     <path style="pointer-events: none;" data-type="trajectory" data-start="0" data-end="4" id="0-4" d="M237.4,494.9c0,0,71-20,134.5-2" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="4" data-end="6" id="4-6" d="M371.9,492.9c2.2,0.6,4.4,1.3,6.6,2c65.1,21.4,113.8,58,113.8,58s71.1,53.2,109.6,31.7c1.3-0.7,2.5-1.4,3.8-2.2" fill="transparent"></path>
@@ -262,9 +269,9 @@
                     <path style="pointer-events: none;" data-type="trajectory" data-start="8" data-end="9" id="8-9" d="M746.5,497.5c7-8.7,40.7-131.8,69.3-112.5" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="9" data-end="10" id="9-10" d="M815.8,385.1c28.6,19.4,53.1,38.6,73.4,42.9" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="10" data-end="11" id="10-11" d="M889.2,427.9c20.3,4.3,113.3,4.1,128.6,14.8" fill="transparent"></path>
-                    <path style="pointer-events: none;" data-type="trajectory" data-start="11" data-end="12" id="11-12" d="M1017.8,442.7c15.3,10.7,72.9,57.1,92.2,92.7" fill="transparent"></path>
+                    <path style="pointer-events: none;" data-type="trajectory" data-start="11" data-end="12" id="11-12" d="M1019.5 444L1031 452.5L1040 460.5L1049 468L1058 475.5L1065.5 483L1075 492.5L1082 500L1090 508.5L1096.5 515.5L1103.5 525.5L1108.5 535L1110 536.5" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="13" id="12-13" d="M1109 538L1115.5 532L1120.5 526.5L1128 517.5L1135 510L1143 502.5L1149.5 494.5L1157 487L1163.5 479.5L1172 470.5L1179 463L1183 459" fill="transparent"/></path>
-                    <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="14" id="12-14" d="M1110,535.4c19.4,35.6,210.8,91.2,259.8,73.5" fill="transparent"></path>
+                    <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="14" id="12-14" d="M1110 538L1140 559.5L1173 574.5L1240 595.5L1304.5 610L1337 613H1370" fill="transparent"></path>
 
                     <path style="pointer-events: none;" data-type="trajectory" data-start="4" data-end="0" id="4-0" d="M237.4,494.9c0,0,71-20,134.5-2" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="6" data-end="4" id="6-4" d="M371.9,492.9c2.2,0.6,4.4,1.3,6.6,2c65.1,21.4,113.8,58,113.8,58s71.1,53.2,109.6,31.7c1.3-0.7,2.5-1.4,3.8-2.2" fill="transparent"></path>
@@ -273,15 +280,15 @@
                     <path style="pointer-events: none;" data-type="trajectory" data-start="9" data-end="8" id="9-8" d="M746.5,497.5c7-8.7,40.7-131.8,69.3-112.5" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="10" data-end="9" id="10-9" d="M815.8,385.1c28.6,19.4,53.1,38.6,73.4,42.9" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="11" data-end="10" id="11-10" d="M889.2,427.9c20.3,4.3,113.3,4.1,128.6,14.8" fill="transparent"></path>
-                    <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="11" id="12-11" d="M1017.8,442.7c15.3,10.7,72.9,57.1,92.2,92.7" fill="transparent"></path>
+                    <path style="pointer-events: none;" data-type="trajectory" data-start="12" data-end="11" id="12-11" d="M1019.5 444L1031 452.5L1040 460.5L1049 468L1058 475.5L1065.5 483L1075 492.5L1082 500L1090 508.5L1096.5 515.5L1103.5 525.5L1108.5 535L1110 536.5" fill="transparent"></path>
                     <path style="pointer-events: none;" data-type="trajectory" data-start="13" data-end="12" id="13-12" d="M1109 538L1115.5 532L1120.5 526.5L1128 517.5L1135 510L1143 502.5L1149.5 494.5L1157 487L1163.5 479.5L1172 470.5L1179 463L1183 459" fill="transparent"/></path>
-                    <path style="pointer-events: none;" data-type="trajectory" data-start="14" data-end="12" id="14-12" d="M1110,535.4c19.4,35.6,210.8,91.2,259.8,73.5" fill="transparent"></path>
+                    <path style="pointer-events: none;" data-type="trajectory" data-start="14" data-end="12" id="14-12" d="M1110 538L1140 559.5L1173 574.5L1240 595.5L1304.5 610L1337 613H1370" fill="transparent"></path>
                 </svg>
             </div>
         </div>
 
-        <audio id="train-audio-edet" src="assets/audio/edet.mp3" preload="auto"></audio>
-        <audio id="train-audio-ostanovka" src="assets/audio/ostanovka.mp3" preload="auto"></audio>
+        <script src="scrollIntoView.min.js"></script>
+        <script src="howler.min.js"></script>
         <script src="index.js"></script>
     </body>
 </html>

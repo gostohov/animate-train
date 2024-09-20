@@ -4,6 +4,21 @@ let isAnimating = false;
 // Флаг для отслеживания состояния звука
 let isMuted = false;
 
+let movingToCityId;
+
+const soundTrainMoving = new Howl({
+    src: ['assets/audio/edet.mp3']
+});
+
+const soundTrainStopping = new Howl({
+    src: ['assets/audio/ostanovka.mp3']
+});
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.remove();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     openWelcomePopup();
 
@@ -20,13 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelectorAll("[data-type='city']").forEach(el => {
         el.addEventListener("click", () => {
+            const cityId = el.id;
+
             if (isAnimating) {
+                if (cityId == movingToCityId) {
+                    openPopup(el);
+                }
+
                 return;
             }
 
             openPopup(el);
 
-            const cityId = el.id;
             const train = document.getElementById('train');
             const startCityId = parseInt(train.getAttribute('data-current-position'));
             if (cityId == startCityId) {
@@ -65,6 +85,8 @@ const moveTo = (destinationCityEl) => {
     // Создаем GSAP timeline для последовательной анимации движения поезда по каждому пути
     const timeline = gsap.timeline({
         onStart: () => {
+            movingToCityId = destinationCityId;
+
             // Устанавливаем флаг для предотвращения новых анимаций
             isAnimating = true;
 
@@ -73,29 +95,21 @@ const moveTo = (destinationCityEl) => {
             markCityAsPristine(startCityEl);
             markCityAsTouched(destinationCityEl);
 
-            const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
-            const popupFooterNextButtonEl = document.querySelector(".btn-next");
-            popupFooterPrevButtonEl.classList.add('disabled');
-            popupFooterNextButtonEl.classList.add('disabled');
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         },
         onComplete: () => {
             // Сбрасываем флаг после завершения всей анимации
             isAnimating = false;
 
-            const prevCityId = destinationCityEl.dataset.prevcity;
-            const popupFooterPrevButtonEl = document.querySelector('.btn-prev');
-            if (prevCityId !== undefined && popupFooterPrevButtonEl) {
-                popupFooterPrevButtonEl.classList.remove('disabled');
-            }
-            const nextCityId = destinationCityEl.dataset.nextcity;
-            const popupFooterNextButtonEl = document.querySelector(".btn-next");
-            if (nextCityId !== undefined && popupFooterNextButtonEl) {
-                popupFooterNextButtonEl.classList.remove('disabled');
-            }
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         },
         onUpdate: () => {
             centerScrollOnTrain();
             setSoundVolume();
+            togglePopupPrevBtn(destinationCityEl);
+            togglePopupNextBtn(destinationCityEl);
         }
     });
 
@@ -199,7 +213,11 @@ const buildGraph = (trajectories) => {
 
 const centerScrollOnTrain = () => {
     const train = document.getElementById('train');
-    train.scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+    scrollIntoView(train, {
+        time: 0,
+        validTarget: (target, parentsScrolled) => document.querySelector(".map-container") == target,
+        isScrollable: (target, defaultIsScrollable) => true
+    });
 };
 
 const openPopup = (cityElement) => {
@@ -248,32 +266,64 @@ const openPopup = (cityElement) => {
     // Добавляем callback на кнопку закрытия попапа
     document.querySelector(".btn-close").addEventListener("click", () => closePopup());
 
+    togglePopupPrevBtn(cityElement);
     const btnPrevEl = document.querySelector(".btn-prev");
+    btnPrevEl.addEventListener("click", () => {
+        const prevCityId = cityElement.dataset.prevcity;
+        const prevCityEl = document.getElementById(prevCityId);
+        openPopup(prevCityEl);
+        moveTo(prevCityEl);
+    });
+
+    togglePopupNextBtn(cityElement);
+    const btnNextEl = document.querySelector(".btn-next");
+    btnNextEl.addEventListener("click", () => {
+        const nextCityId = cityElement.dataset.nextcity;
+        const nextCityEl = document.getElementById(nextCityId);
+        openPopup(nextCityEl);
+        moveTo(nextCityEl);
+    });
+}
+
+const togglePopupPrevBtn = (cityElement) => {
+    const btnPrevEl = document.querySelector(".btn-prev");
+    if (!btnPrevEl) {
+        return;
+    }
+
+    if (isAnimating) {
+        btnPrevEl.classList.add('disabled');
+        return;
+    }
+
     const prevCityId = cityElement.dataset.prevcity;
     if (prevCityId !== undefined) {
         btnPrevEl.classList.remove('disabled');
-        btnPrevEl.addEventListener("click", () => {
-            const prevCityEl = document.getElementById(prevCityId);
-            openPopup(prevCityEl);
-            moveTo(prevCityEl);
-        });
     } else {
         btnPrevEl.classList.add('disabled');
     }
+}
 
+const togglePopupNextBtn = (cityElement) => {
     const btnNextEl = document.querySelector(".btn-next");
+    if (!btnNextEl) {
+        return;
+    }
+
+    if (isAnimating) {
+        btnNextEl.classList.add('disabled');
+        return;
+    }
+
     const nextCityId = cityElement.dataset.nextcity;
     if (nextCityId !== undefined) {
         btnNextEl.classList.remove('disabled');
-        btnNextEl.addEventListener("click", () => {
-            const nextCityEl = document.getElementById(nextCityId);
-            openPopup(nextCityEl);
-            moveTo(nextCityEl);
-        });
     } else {
         btnNextEl.classList.add('disabled');
     }
 }
+
+
 
 const closePopup = () => {
     // Находим элемент попапа
@@ -287,24 +337,14 @@ const closePopup = () => {
     }
 }
 
-const playAudio = (audioId) => {
-    const audioElement = document.getElementById(audioId);
-    if (audioElement) {
-        audioElement.currentTime = 0; // Сброс времени воспроизведения на начало
-        audioElement.play().catch(error => {
-            console.error("Ошибка при воспроизведении аудио:", error);
-        });
-    }
-};
-
 // Воспроизведение звука движения поезда
 const playTrainMoveSound = () => {
-    playAudio('train-audio-edet');
+    soundTrainMoving.play();
 };
 
 // Воспроизведение звука остановки поезда
 const playTrainStopSound = () => {
-    playAudio('train-audio-ostanovka');
+    soundTrainStopping.play();
 };
 
 // Функция для переключения звука и смены иконки
@@ -315,15 +355,12 @@ const toggleSound = () => {
 };
 
 const setSoundVolume = () => {
-    const audioEdet = document.getElementById('train-audio-edet');
-    const audioOstanovka = document.getElementById('train-audio-ostanovka');
-
     // Переключаем громкость аудио
-    if (!audioEdet.paused) {
-        audioEdet.volume = !isMuted ? 1 : 0;
+    if (!soundTrainMoving.paused) {
+        soundTrainMoving.mute(isMuted);
     }
-    if (!audioOstanovka.paused) {
-        audioOstanovka.volume = !isMuted ? 1 : 0;
+    if (!soundTrainStopping.paused) {
+        soundTrainStopping.mute(isMuted);
     }
 }
 
@@ -348,11 +385,14 @@ const openWelcomePopup = () => {
     // Наполняем попап содержимым
     popupEl.innerHTML = `
         <div class="welcome-popup-wrapper">
+            <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
             <div class="welcome-popup">
                 <h1 class="welcome-popup-header">Искусство БАМа</h1>
                 <div class="welcome-popup-description">БАМ — одна из крупнейших железных дорог мира, которую возводили миллионы человек на протяжении десятилетия. Такой масштабный проект оставил после себя и огромный культурный пласт. Здесь мы расскажем об истории строительства, жизни и труде рабочих в непростых условиях в архивных фотографиях и картинах от самих строителей магистрали.</div>
-                <h2 class="welcome-popup-header">Инструкция:</h2>
-                <i class="welcome-popup-instruction">Для того, чтобы перемещаться между станциями и узнать их историю, нажми на название станции или точку на карте, и поезд поедет по указанному маршруту. Звуковое сопровождение на сайте можно отключить, нажав на иконку звука.</i>
+                <div>
+                    <h2 class="welcome-popup-header">Инструкция:</h2>
+                    <i class="welcome-popup-instruction">Для того, чтобы перемещаться между станциями и узнать их историю, нажми на название станции или точку на карте, и поезд поедет по указанному маршруту. Звуковое сопровождение на сайте можно отключить, нажав на иконку звука.</i>
+                </div>
                 <button class="welcome-popup-btn clickable">Поехали</button>
             </div>
         </div>
@@ -363,6 +403,9 @@ const openWelcomePopup = () => {
 
     const welcomePopupBtnEl = document.querySelector('.welcome-popup-btn');
     welcomePopupBtnEl.addEventListener('click', closeWelcomePopup);
+
+    const btnClose = document.querySelector('.btn-close');
+    btnClose.addEventListener('click', closeWelcomePopup);
 };
 
 const closeWelcomePopup = () => {
