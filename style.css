@@ -344,3 +344,22 @@ html, body {
         height: 24px;
     }
 }
+
+.image-button-sound {
+    background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
+    background-size: contain; /* Настройка размера изображения */
+    background-repeat: no-repeat; /* Отключаем повторение изображения */
+    border: none; /* Убираем рамку */
+    width: 36px; /* Ширина кнопки */
+    height: 36px; /* Высота кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    color: #A30000;
+    border-radius: 25px;
+}
+
+.popup-buttons {
+    display: flex; /* Используем Flexbox для размещения элементов в ряд */
+    justify-content: space-between; /* Распределяем свободное пространство между элементами */
+    
+}
+
