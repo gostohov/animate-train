@@ -165,7 +165,6 @@ html, body {
 
 .welcome-popup-wrapper {
     background-color: #D8E2E5;
-    width: 40%;
     display: grid;
     place-items: center;
     border-radius: 20px;
@@ -203,8 +202,8 @@ html, body {
 }
 
 .welcome-popup-btn {
-    margin-left: 113px;
-    margin-right: 115px;
+    place-self: center;
+    flex-grow: 0;
     padding: 25px 75px;
     font-size: 18px;
     border: none;
