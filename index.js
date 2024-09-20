@@ -341,11 +341,19 @@ const playAudio = (audioId) => {
 
 // Воспроизведение звука движения поезда
 const playTrainMoveSound = () => {
-    playAudio('train-audio-edet');
+    const sound = new Howl({
+        src: ['assets/audio/edet.mp3']
+    });
+    sound.play();
+    // playAudio('train-audio-edet');
 };
 
 // Воспроизведение звука остановки поезда
 const playTrainStopSound = () => {
+    const sound = new Howl({
+        src: ['assets/audio/ostanovka.mp3']
+    });
+    sound.play();
     playAudio('train-audio-ostanovka');
 };
 
