@@ -7,11 +7,13 @@ let isMuted = false;
 let movingToCityId;
 
 const soundTrainMoving = new Howl({
-    src: ['assets/audio/edet.mp3']
+    src: ['assets/audio/edet.mp3'],
+    html5: true
 });
 
 const soundTrainStopping = new Howl({
-    src: ['assets/audio/ostanovka.mp3']
+    src: ['assets/audio/ostanovka.mp3'],
+    html5: true
 });
 
 window.addEventListener('load', () => {
