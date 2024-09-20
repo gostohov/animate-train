@@ -6,6 +6,14 @@ let isMuted = false;
 
 let movingToCityId;
 
+const soundTrainMoving = new Howl({
+    src: ['assets/audio/edet.mp3']
+});
+
+const soundTrainStopping = new Howl({
+    src: ['assets/audio/ostanovka.mp3']
+});
+
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     preloader.remove();
@@ -329,24 +337,14 @@ const closePopup = () => {
     }
 }
 
-const playAudio = (audioId) => {
-    const audioElement = document.getElementById(audioId);
-    if (audioElement) {
-        audioElement.currentTime = 0; // Сброс времени воспроизведения на начало
-        audioElement.play().catch(error => {
-            console.error("Ошибка при воспроизведении аудио:", error);
-        });
-    }
-};
-
 // Воспроизведение звука движения поезда
 const playTrainMoveSound = () => {
-    playAudio('train-audio-edet');
+    soundTrainMoving.play();
 };
 
 // Воспроизведение звука остановки поезда
 const playTrainStopSound = () => {
-    playAudio('train-audio-ostanovka');
+    soundTrainStopping.play();
 };
 
 // Функция для переключения звука и смены иконки
@@ -357,15 +355,12 @@ const toggleSound = () => {
 };
 
 const setSoundVolume = () => {
-    const audioEdet = document.getElementById('train-audio-edet');
-    const audioOstanovka = document.getElementById('train-audio-ostanovka');
-
     // Переключаем громкость аудио
-    if (!audioEdet.paused) {
-        audioEdet.muted = isMuted;
+    if (!soundTrainMoving.paused) {
+        soundTrainMoving.mute(isMuted);
     }
-    if (!audioOstanovka.paused) {
-        audioOstanovka.muted = isMuted;
+    if (!soundTrainStopping.paused) {
+        soundTrainStopping.mute(isMuted);
     }
 }
 
