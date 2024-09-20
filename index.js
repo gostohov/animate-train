@@ -239,7 +239,10 @@ const openPopup = (cityElement) => {
     }
     popupEl.innerHTML = `
         <div class="popup-content">
-            <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+            <div class="popup-buttons">    
+                <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+                <button class="image-button-sound"></button>
+            </div>
             <div class="popup-header">
                 <h1>${cityElement.dataset.cityname}</h1>
             </div>
@@ -265,6 +268,13 @@ const openPopup = (cityElement) => {
 
     // Добавляем callback на кнопку закрытия попапа
     document.querySelector(".btn-close").addEventListener("click", () => closePopup());
+    document.querySelector(".image-button-sound").addEventListener("click", () => {
+        toggleSound()
+    });
+
+    
+
+    
 
     togglePopupPrevBtn(cityElement);
     const btnPrevEl = document.querySelector(".btn-prev");
@@ -352,7 +362,19 @@ const toggleSound = () => {
     isMuted = !isMuted;
     toggleSoundIcon();
     setSoundVolume();
+    toggleSoundIconPop();
 };
+
+const toggleSoundIconPop = () => {
+    // Получаем элемент с иконкой аудио
+    const audioToggleEl = document.querySelector('.image-button-sound');
+    // Меняем иконку
+    if (isMuted) {
+        audioToggleEl.classList.remove('sound-off');
+    } else {
+        audioToggleEl.classList.add('sound-off');
+    }
+}
 
 const setSoundVolume = () => {
     // Переключаем громкость аудио
@@ -373,7 +395,8 @@ const toggleSoundIcon = () => {
     } else {
         audioToggleEl.setAttribute('href', 'assets/img/audio_mute.svg');
     }
-}
+}   
+
 
 const openWelcomePopup = () => {
     const containerEl = document.querySelector(".container");
