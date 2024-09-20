@@ -241,7 +241,7 @@ const openPopup = (cityElement) => {
         <div class="popup-content">
             <div class="popup-buttons">    
                 <button class="btn-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-                <button class="image-button-sound"></button>
+                <button class="image-button-sound ${!isMuted ? 'sound-off' : ''}"></button>
             </div>
             <div class="popup-header">
                 <h1>${cityElement.dataset.cityname}</h1>
