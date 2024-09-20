@@ -268,18 +268,13 @@ const openPopup = (cityElement) => {
 
     // Добавляем callback на кнопку закрытия попапа
     document.querySelector(".btn-close").addEventListener("click", () => closePopup());
-    document.querySelector(".image-button-sound").addEventListener("click", () => toggleSound());
+    document.querySelector(".image-button-sound").addEventListener("click", () => {
+        toggleSound()
+    });
 
-    const toggleSoundIconPop = () => {
-        // Получаем элемент с иконкой аудио
-        const audioToggleEl = document.getElementById('image-button-sound');
-        // Меняем иконку
-        if (isMuted) {
-            audioToggleEl.setAttribute('href', 'assets/img/sound-on.png');
-        } else {
-            audioToggleEl.setAttribute('href', 'assets/img/sound-off.png');
-        }
-    }
+    
+
+    
 
     togglePopupPrevBtn(cityElement);
     const btnPrevEl = document.querySelector(".btn-prev");
@@ -367,7 +362,19 @@ const toggleSound = () => {
     isMuted = !isMuted;
     toggleSoundIcon();
     setSoundVolume();
+    toggleSoundIconPop();
 };
+
+const toggleSoundIconPop = () => {
+    // Получаем элемент с иконкой аудио
+    const audioToggleEl = document.querySelector('.image-button-sound');
+    // Меняем иконку
+    if (isMuted) {
+        audioToggleEl.classList.remove('sound-off');
+    } else {
+        audioToggleEl.classList.add('sound-off');
+    }
+}
 
 const setSoundVolume = () => {
     // Переключаем громкость аудио
