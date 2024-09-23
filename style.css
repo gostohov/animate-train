@@ -341,20 +341,28 @@ html, body {
         -moz-transform: translate(-85px, 65px); /* Firefox */
     }
 
-    #logovk {
-        transform: translate(-1805px, 130px);
-        -ms-transform: translate(-1805px, 130px); /* IE 9 */
-        -webkit-transform: translate(-1805px, 130px); /* Safari and Chrome */
-        -o-transform: translate(-1805px, 130px); /* Opera */
-        -moz-transform: translate(-1805px, 130px); /* Firefox */
+    #logotg {
+        transform: translate(-1635px, 130px);
+        -ms-transform: translate(-1635px, 130px); /* IE 9 */
+        -webkit-transform: translate(-1635px, 130px); /* Safari and Chrome */
+        -o-transform: translate(-1635px, 130px); /* Opera */
+        -moz-transform: translate(-1635px, 130px); /* Firefox */
     }
 
-    #logotg {
+    #logovk {
         transform: translate(-1720px, 195px);
         -ms-transform: translate(-1720px, 195px); /* IE 9 */
         -webkit-transform: translate(-1720px, 195px); /* Safari and Chrome */
         -o-transform: translate(-1720px, 195px); /* Opera */
         -moz-transform: translate(-1720px, 195px); /* Firefox */
+    }
+
+    #logook {
+        transform: translate(-1805px, 260px);
+        -ms-transform: translate(-1805px, 260px); /* IE 9 */
+        -webkit-transform: translate(-1805px, 260px); /* Safari and Chrome */
+        -o-transform: translate(-1805px, 260px); /* Opera */
+        -moz-transform: translate(-1805px, 260px); /* Firefox */
     }
 
     .container > .map-container {
