@@ -297,7 +297,8 @@ html, body {
     }
 
     .container > .map-container {
-        overflow: scroll;
+        overflow-y: hidden;
+        overflow-x: scroll;
     }
 
     .container > .map-container > svg {
