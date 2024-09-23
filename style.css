@@ -268,9 +268,61 @@ html, body {
     animation: spin 1s linear infinite; /* Анимация вращения */
 }
 
+.image-button-sound {
+    background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
+    background-size: contain; /* Настройка размера изображения */
+    background-repeat: no-repeat; /* Отключаем повторение изображения */
+    border: none; /* Убираем рамку */
+    width: 36px; /* Ширина кнопки */
+    height: 36px; /* Высота кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    color: #A30000;
+    border-radius: 25px;
+}
+
+.image-button-sound.sound-off {
+    background-image: url('assets/img/sound-off.png');
+}
+
+.popup-buttons {
+    display: flex; /* Используем Flexbox для размещения элементов в ряд */
+    justify-content: space-between; /* Распределяем свободное пространство между элементами */
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1200px) {
+    .popup-content {
+        gap: 8px;
+        padding: 20px 20px 0;
+    }
+
+    .popup-body {
+        grid-template-columns: 1fr;
+        grid-gap: 12px;
+    }
+
+    .popup-footer {
+        padding: 0 20px 10px;
+    }
+
+    .popup-footer > .btn-prev {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .popup-footer > .btn-next {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .btn-close, .image-button-sound {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -315,56 +367,5 @@ html, body {
         grid-template-columns: 1fr;
         grid-template-rows: 30% 70%;
     }
-
-    .popup-content {
-        gap: 8px;
-        padding: 20px 20px 0;
-    }
-
-    .popup-body {
-        grid-template-columns: 1fr;
-        grid-gap: 12px;
-    }
-
-    .popup-footer {
-        padding: 0 20px 10px;
-    }
-
-    .popup-footer > .btn-prev {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    .popup-footer > .btn-next {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    .btn-close {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-.image-button-sound {
-    background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
-    background-size: contain; /* Настройка размера изображения */
-    background-repeat: no-repeat; /* Отключаем повторение изображения */
-    border: none; /* Убираем рамку */
-    width: 36px; /* Ширина кнопки */
-    height: 36px; /* Высота кнопки */
-    cursor: pointer; /* Курсор при наведении */
-    color: #A30000;
-    border-radius: 25px;
-}
-
-.image-button-sound.sound-off {
-    background-image: url('assets/img/sound-off.png');
-}
-
-.popup-buttons {
-    display: flex; /* Используем Flexbox для размещения элементов в ряд */
-    justify-content: space-between; /* Распределяем свободное пространство между элементами */
-    
 }
 
