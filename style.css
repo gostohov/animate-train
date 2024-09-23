@@ -161,6 +161,7 @@ html, body {
     display: grid;
     place-items: center;
     font-family: HelveticaNeueLight;
+    overflow-y: scroll;
 }
 
 .welcome-popup-wrapper {
