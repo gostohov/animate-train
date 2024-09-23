@@ -335,8 +335,6 @@ const togglePopupNextBtn = (cityElement) => {
     }
 }
 
-
-
 const closePopup = () => {
     // Находим элемент попапа
     const popupEl = document.querySelector(".popup-container");
@@ -372,9 +370,9 @@ const toggleSoundIconPop = () => {
     const audioToggleEl = document.querySelector('.image-button-sound');
     // Меняем иконку
     if (isMuted) {
-        audioToggleEl.classList.remove('sound-off');
-    } else {
         audioToggleEl.classList.add('sound-off');
+    } else {
+        audioToggleEl.classList.remove('sound-off');
     }
 }
 
@@ -393,12 +391,11 @@ const toggleSoundIcon = () => {
     const audioToggleEl = document.getElementById('audio-toggle');
     // Меняем иконку
     if (isMuted) {
-        audioToggleEl.setAttribute('href', 'assets/img/audio_unmute.svg');
-    } else {
         audioToggleEl.setAttribute('href', 'assets/img/audio_mute.svg');
+    } else {
+        audioToggleEl.setAttribute('href', 'assets/img/audio_unmute.svg');
     }
 }   
-
 
 const openWelcomePopup = () => {
     const containerEl = document.querySelector(".container");
