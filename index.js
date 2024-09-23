@@ -146,11 +146,12 @@ const moveTo = (destinationCityEl) => {
                 // Обновляем позицию поезда в начале каждой анимации
                 train.setAttribute('data-current-position', end);
 
-                // Меняем изображение поезда в зависимости от направления движения
+                // Логика изменения направления поезда
                 if (isMovingBackward) {
-                    train.setAttribute('href', 'assets/img/train_reverse.svg');
+                    gsap.set(train, { scaleY: -1, scaleX: -1 });
                 } else {
-                    train.setAttribute('href', 'assets/img/train.svg');
+                    // Убираем отражение, если едем вперед
+                    gsap.set(train, { scaleY: 1, scaleX: 1 });
                 }
             }
         });
@@ -273,10 +274,6 @@ const openPopup = (cityElement) => {
     document.querySelector(".image-button-sound").addEventListener("click", () => {
         toggleSound()
     });
-
-    
-
-    
 
     togglePopupPrevBtn(cityElement);
     const btnPrevEl = document.querySelector(".btn-prev");
