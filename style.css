@@ -334,18 +334,27 @@ html, body {
     }
 
     #audio-toggle {
-        x: 30;
-        y: 100;
+        transform: translate(-85px, 65px);
+        -ms-transform: translate(-85px, 65px); /* IE 9 */
+        -webkit-transform: translate(-85px, 65px); /* Safari and Chrome */
+        -o-transform: translate(-85px, 65px); /* Opera */
+        -moz-transform: translate(-85px, 65px); /* Firefox */
     }
 
     #logovk {
-        x: 30;
-        y: 170;
+        transform: translate(-1805px, 130px);
+        -ms-transform: translate(-1805px, 130px); /* IE 9 */
+        -webkit-transform: translate(-1805px, 130px); /* Safari and Chrome */
+        -o-transform: translate(-1805px, 130px); /* Opera */
+        -moz-transform: translate(-1805px, 130px); /* Firefox */
     }
 
     #logotg {
-        x: 30;
-        y: 240;
+        transform: translate(-1720px, 195px);
+        -ms-transform: translate(-1720px, 195px); /* IE 9 */
+        -webkit-transform: translate(-1720px, 195px); /* Safari and Chrome */
+        -o-transform: translate(-1720px, 195px); /* Opera */
+        -moz-transform: translate(-1720px, 195px); /* Firefox */
     }
 
     .container > .map-container {
