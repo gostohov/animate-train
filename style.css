@@ -80,8 +80,8 @@ html, body {
     gap: 16px;
     overflow: hidden;
 }
-
 .btn-close {
+    background: transparent;
     width: 36px;
     height: 36px;
     border: 2px solid;
@@ -91,6 +91,21 @@ html, body {
     flex-shrink: 0;
     display: grid;
     place-items: center;
+}
+
+@media (max-width: 576px){
+    .btn-close {
+        background: #d8e2e5;
+        width: 36px;
+        height: 36px;
+        border: 1px solid;
+        border-radius: 50%;
+        cursor: pointer;
+        color: #D90000;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+    }
 }
 
 .btn-close:active {
@@ -271,23 +286,37 @@ html, body {
     height: 50px;
     animation: spin 1s linear infinite; /* Анимация вращения */
 }
-
-.image-button-sound {
-    background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
-    background-size: contain; /* Настройка размера изображения */
-    background-repeat: no-repeat; /* Отключаем повторение изображения */
-    border: none; /* Убираем рамку */
-    width: 36px; /* Ширина кнопки */
-    height: 36px; /* Высота кнопки */
-    cursor: pointer; /* Курсор при наведении */
-    color: #A30000;
-    border-radius: 25px;
+@media (max-width: 576px) {
+    .image-button-sound {
+        background-image: url('assets/img/sound-on+back.png'); /* Укажите путь к вашему изображению */
+        background-size: contain; /* Настройка размера изображения */
+        background-repeat: no-repeat; /* Отключаем повторение изображения */
+        border: none; /* Убираем рамку */
+        width: 36px; /* Ширина кнопки */
+        height: 36px; /* Высота кнопки */
+        cursor: pointer; /* Курсор при наведении */
+        color: #A30000;
+        border-radius: 25px;
+    }
 }
 
-.image-button-sound.sound-off {
-    background-image: url('assets/img/sound-off.png');
+@media (min-width: 577px) {
+    .image-button-sound {
+        display: none;
+    }
 }
 
+@media (max-width: 576px){
+    .image-button-sound.sound-off {
+        background-image: url('assets/img/sound-off+back.png');
+        }
+
+@media (min-width: 577px){
+    .image-button-sound.sound-off {
+        display: none;
+        }
+
+}
 .popup-buttons {
     display: flex; /* Используем Flexbox для размещения элементов в ряд */
     justify-content: space-between; /* Распределяем свободное пространство между элементами */
