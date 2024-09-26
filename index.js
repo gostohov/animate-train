@@ -8,12 +8,14 @@ let movingToCityId;
 
 const soundTrainMoving = new Howl({
     src: ['assets/audio/edet.mp3'],
-    html5: true
+    html5: true,
+    preload: true
 });
 
 const soundTrainStopping = new Howl({
     src: ['assets/audio/ostanovka.mp3'],
-    html5: true
+    html5: true,
+    preload: true
 });
 
 window.addEventListener('load', () => {
