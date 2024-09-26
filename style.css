@@ -122,6 +122,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     padding: 0 24px 24px;
+    gap: 16px;
 }
 
 .popup-footer button {
