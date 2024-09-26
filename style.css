@@ -81,7 +81,6 @@ html, body {
     overflow: hidden;
 }
 .btn-close {
-    background: transparent;
     width: 36px;
     height: 36px;
     border: 2px solid;
@@ -95,7 +94,6 @@ html, body {
 
 @media (max-width: 576px){
     .btn-close {
-        background: #d8e2e5;
         width: 36px;
         height: 36px;
         border: 1px solid;
@@ -288,7 +286,7 @@ html, body {
 }
 @media (max-width: 576px) {
     .image-button-sound {
-        background-image: url('assets/img/sound-on+back.png'); /* Укажите путь к вашему изображению */
+        background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
         background-size: contain; /* Настройка размера изображения */
         background-repeat: no-repeat; /* Отключаем повторение изображения */
         border: none; /* Убираем рамку */
@@ -308,7 +306,7 @@ html, body {
 
 @media (max-width: 576px){
     .image-button-sound.sound-off {
-        background-image: url('assets/img/sound-off+back.png');
+        background-image: url('assets/img/sound-off.png');
         }
 
 @media (min-width: 577px){
