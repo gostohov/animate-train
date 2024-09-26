@@ -192,6 +192,7 @@ html, body {
 
 .welcome-popup-header {
     font-family: OldRus;
+    margin-top: 20px;
 }
 
 .welcome-popup-description {
@@ -213,6 +214,7 @@ html, body {
     background-color: #E42918;
     font-family: OldRus;
     border-radius: 8px;
+    margin: 20px 0;
 }
 
 /* Chrome, Edge and Safari */
