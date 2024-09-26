@@ -108,7 +108,11 @@ const moveTo = (destinationCityEl) => {
             togglePopupNextBtn(destinationCityEl);
         },
         onUpdate: () => {
-            centerScrollOnTrain();
+            // Если попап закрыт, то не выполоняем центрирование
+            const popupEl = document.querySelector(".popup-container");
+            if (popupEl) {
+                centerScrollOnTrain();
+            }
             setSoundVolume();
             togglePopupPrevBtn(destinationCityEl);
             togglePopupNextBtn(destinationCityEl);
@@ -270,7 +274,10 @@ const openPopup = (cityElement) => {
     containerEl.appendChild(popupEl);
 
     // Добавляем callback на кнопку закрытия попапа
-    document.querySelector(".btn-close").addEventListener("click", () => closePopup());
+    document.querySelector(".btn-close").addEventListener("click", () => {
+        closePopup();
+        centerScrollOnTrain();
+    });
     document.querySelector(".image-button-sound").addEventListener("click", () => {
         toggleSound()
     });
