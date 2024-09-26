@@ -218,15 +218,15 @@ html, body {
     margin: 20px 0;
 }
 
-/* Chrome, Edge and Safari */
+/* Стили для Chrome, Edge и Safari */
 *::-webkit-scrollbar {
-    height: 10px;
     width: 10px;
+    height: 10px;
 }
 
 *::-webkit-scrollbar-track {
-    border-radius: 5px;
     background-color: #DFE9EB;
+    border-radius: 5px;
 }
 
 *::-webkit-scrollbar-track:hover {
@@ -238,8 +238,8 @@ html, body {
 }
 
 *::-webkit-scrollbar-thumb {
-    border-radius: 5px;
     background-color: #D90000;
+    border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -249,6 +249,13 @@ html, body {
 *::-webkit-scrollbar-thumb:active {
     background-color: #A30000;
 }
+
+/* Для Firefox (scrollbar-color и scrollbar-width) */
+* {
+    scrollbar-width: thin; /* Устанавливаем тонкий скроллбар */
+    scrollbar-color: #D90000 #DFE9EB; /* Цвет для полосы и фона */
+}
+
 
 #preloader {
     position: fixed;
