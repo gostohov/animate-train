@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'OldRus'; 
+    font-family: 'OldRus';
     src: url('assets/fonts/old_rus.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'HelveticaNeueLight'; 
+    font-family: 'HelveticaNeueLight';
     src: url('assets/fonts/HelveticaNeue-Light.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -222,34 +222,35 @@ html, body {
 *::-webkit-scrollbar {
     height: 10px;
     width: 10px;
-  }
-  *::-webkit-scrollbar-track {
+}
+
+*::-webkit-scrollbar-track {
     border-radius: 5px;
     background-color: #DFE9EB;
-  }
-  
-  *::-webkit-scrollbar-track:hover {
+}
+
+*::-webkit-scrollbar-track:hover {
     background-color: #B8C0C2;
-  }
-  
-  *::-webkit-scrollbar-track:active {
+}
+
+*::-webkit-scrollbar-track:active {
     background-color: #B8C0C2;
-  }
-  
-  *::-webkit-scrollbar-thumb {
+}
+
+*::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #D90000;
-  }
-  
-  *::-webkit-scrollbar-thumb:hover {
-    background-color: #A30000;
-  }
-  
-  *::-webkit-scrollbar-thumb:active {
-    background-color: #A30000;
-  }
+}
 
-  #preloader {
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #A30000;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #A30000;
+}
+
+#preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -293,8 +294,12 @@ html, body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 1200px) {
