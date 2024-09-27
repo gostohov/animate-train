@@ -374,6 +374,10 @@ const toggleSound = () => {
 const toggleSoundIconPop = () => {
     // Получаем элемент с иконкой аудио
     const audioToggleEl = document.querySelector('.image-button-sound');
+    if (!audioToggleEl) {
+        return;
+    }
+
     // Меняем иконку
     if (isMuted) {
         audioToggleEl.classList.add('sound-off');
