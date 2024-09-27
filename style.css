@@ -273,6 +273,7 @@ html, body {
 }
 
 .image-button-sound {
+    display: none;
     background-image: url('assets/img/sound-on.png'); /* Укажите путь к вашему изображению */
     background-size: contain; /* Настройка размера изображения */
     background-repeat: no-repeat; /* Отключаем повторение изображения */
@@ -330,6 +331,10 @@ html, body {
     .btn-close, .image-button-sound {
         width: 24px;
         height: 24px;
+    }
+
+    .image-button-sound {
+        display: inline-block;
     }
 }
 
