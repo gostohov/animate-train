@@ -166,7 +166,8 @@ html, body {
     top: 0;
     right: 0;
     background: rgb(0 0 0 / 12%);
-    backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);  /* Для современных браузеров */
+    -webkit-backdrop-filter: saturate(180%) blur(10px);  /* Для Safari */
     display: grid;
     place-items: center;
     font-family: HelveticaNeueLight;
