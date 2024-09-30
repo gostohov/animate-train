@@ -41,6 +41,14 @@ html, body {
     overflow: hidden;
 }
 
+.map-container {
+    will-change: scroll-position;
+}
+
+#train {
+    will-change: transform;
+}
+
 .map-container > svg {
     height: 100%;
     width: 100%;
